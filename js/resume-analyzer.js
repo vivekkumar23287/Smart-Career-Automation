@@ -2,6 +2,7 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
+    
 
     const dropZone = document.getElementById('drop-zone');
     const fileInput = document.getElementById('resume-upload');

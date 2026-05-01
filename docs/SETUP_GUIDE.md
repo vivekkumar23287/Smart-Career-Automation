@@ -2,6 +2,7 @@
 
 ## 🚀 Quick Setup Steps
 
+
 ### 1. Supabase Configuration (Already Done ✅)
 Your Supabase credentials are already configured in `supabase-config.js`:
 - **Project URL:** `https://icrxyrafbosojimbfzin.supabase.co`

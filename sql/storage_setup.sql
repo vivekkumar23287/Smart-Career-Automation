@@ -16,6 +16,7 @@ on storage.objects for select
 using ( bucket_id = 'resumes' );
 
 
+
 create policy "Users can update own resumes"
 on storage.objects for update
 using ( bucket_id = 'resumes' AND auth.uid()::text = (storage.foldername(name))[1] );

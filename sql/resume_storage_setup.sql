@@ -14,6 +14,7 @@ create policy "Public Access to Resumes"
   using ( bucket_id = 'resumes' );
 
 
+
 create policy "Authenticated Users can upload resumes"
   on storage.objects for insert
   with check (

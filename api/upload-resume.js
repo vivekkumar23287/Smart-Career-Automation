@@ -1,6 +1,7 @@
 const { put } = require('@vercel/blob');
 const { verifyToken } = require('@clerk/backend');
 
+
 module.exports = async function handler(req, res) {
   // Check auth
   const token = req.headers.authorization?.split(' ')[1];

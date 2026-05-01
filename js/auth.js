@@ -1,6 +1,7 @@
 const clerkPubKey = 'pk_test_cGVhY2VmdWwtY2FpbWFuLTM4LmNsZXJrLmFjY291bnRzLmRldiQ';
 let currentUser = null;
 
+
 async function initAuth() {
     console.log('🔄 Initializing Clerk authentication...');
 

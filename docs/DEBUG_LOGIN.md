@@ -2,6 +2,7 @@
 
 ## How to Debug the Login Button
 
+
 ### Step 1: Open Browser Console
 
 1. Open `index.html` in your browser

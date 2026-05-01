@@ -11,6 +11,7 @@ CREATE TABLE IF NOT EXISTS resume_analyses (
 );
 
 
+
 ALTER TABLE resume_analyses ENABLE ROW LEVEL SECURITY;
 
 

@@ -1,6 +1,7 @@
 const { neon } = require('@neondatabase/serverless');
 const { verifyToken } = require('@clerk/backend');
 
+
 module.exports = async function handler(req, res) {
     try {
         const sql = neon(process.env.DATABASE_URL);

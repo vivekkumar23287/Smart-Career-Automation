@@ -2,6 +2,7 @@
 
 ## 🔐 User Login Data
 
+
 ### View All Users Who Have Logged In:
 
 1. Go to your Supabase Dashboard: https://supabase.com/dashboard

@@ -19,6 +19,7 @@ CREATE TABLE IF NOT EXISTS applications (
 );
 
 
+
 ALTER TABLE applications ENABLE ROW LEVEL SECURITY;
 
 

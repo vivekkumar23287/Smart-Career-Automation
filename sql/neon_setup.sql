@@ -46,5 +46,6 @@ CREATE TABLE IF NOT EXISTS ai_tool_payments (
   created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 );
 
+
 CREATE INDEX IF NOT EXISTS idx_ai_tool_payments_user_id ON ai_tool_payments(user_id);
 CREATE INDEX IF NOT EXISTS idx_ai_tool_payments_user_email ON ai_tool_payments(user_email);

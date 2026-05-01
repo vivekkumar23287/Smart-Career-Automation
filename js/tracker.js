@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         retries++;
     }
 
+    
     const user = window.getCurrentUser();
     if (user) {
         try {

@@ -4,6 +4,7 @@
 
 ### 1️⃣ **First-Time User Visits Website**
 
+
 **What user sees:**
 - Navigation bar with **"Login"** button
 - "Get Started" button

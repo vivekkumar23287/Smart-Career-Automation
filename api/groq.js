@@ -19,6 +19,7 @@ module.exports = async function handler(req, res) {
       }
   }
 
+  
   try {
     const { prompt, max_tokens } = req.body;
 
