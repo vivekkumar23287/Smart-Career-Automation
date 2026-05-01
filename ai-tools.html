@@ -1309,25 +1309,24 @@
 
       // Always check for payment status (No Admin Bypass)
       const approved = await checkPaymentInDB(userId, email);
-        if (approved) {
-          unlockTools(false, approved);
+      if (approved) {
+        unlockTools(false, approved);
+      } else {
+        const pending = await checkPendingInDB(userId, email);
+        if (pending) {
+          const submittedStr = new Date(pending.created_at).toLocaleString('en-IN');
+          document.getElementById('pendingBar').style.display = 'flex';
+          const pendingBar = document.getElementById('pendingBar');
+          pendingBar.querySelector('div').innerHTML =
+            `<strong style="font-size:0.92rem;color:#eab308;">Payment Under Review</strong>
+             <div style="font-size:0.76rem;color:var(--text-muted);margin-top:3px;">
+               UTR: <strong>${pending.utr_number}</strong> · Submitted: ${submittedStr}
+             </div>
+             <div style="font-size:0.74rem;color:var(--text-muted);margin-top:2px;">
+               Admin will approve within a few hours. Refresh to check your status.
+             </div>`;
         } else {
-          const pending = await checkPendingInDB(userId, email);
-          if (pending) {
-            const submittedStr = new Date(pending.created_at).toLocaleString('en-IN');
-            document.getElementById('pendingBar').style.display = 'flex';
-            const pendingBar = document.getElementById('pendingBar');
-            pendingBar.querySelector('div').innerHTML =
-              `<strong style="font-size:0.92rem;color:#eab308;">Payment Under Review</strong>
-               <div style="font-size:0.76rem;color:var(--text-muted);margin-top:3px;">
-                 UTR: <strong>${pending.utr_number}</strong> · Submitted: ${submittedStr}
-               </div>
-               <div style="font-size:0.74rem;color:var(--text-muted);margin-top:2px;">
-                 Admin will approve within a few hours. Refresh to check your status.
-               </div>`;
-          } else {
-            document.getElementById('payGate').style.display = 'block';
-          }
+          document.getElementById('payGate').style.display = 'block';
         }
       }
 
@@ -1338,7 +1337,7 @@
           const notice = document.getElementById('loginNotice');
           if (notice) notice.style.display = 'none';
         } else {
-          window.location.reload(); 
+          window.location.href = 'index.html'; 
         }
       });
     }

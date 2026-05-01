@@ -46,7 +46,8 @@ async function initAuth() {
             } else {
                 currentUser = null;
                 updateUIForUnauthenticatedUser();
-                if (window.location.pathname.includes('tracker.html') || window.location.pathname.includes('resume-analyzer.html')) {
+                const path = window.location.pathname;
+                if (path.includes('tracker.html') || path.includes('resume-analyzer.html') || path.includes('ai-tools.html')) {
                     window.location.href = 'index.html';
                 }
             }
