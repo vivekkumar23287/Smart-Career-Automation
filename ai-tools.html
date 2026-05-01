@@ -735,10 +735,13 @@
           </div>
 
           <div class="field">
-            <label>Your Email Address <span style="color:#ef4444;">*</span></label>
-            <input type="email" id="userEmailInput" placeholder="Enter the email you used to login e.g. name@gmail.com"/>
-            <div class="field-note">Must match your Google login email · Used to activate your account</div>
-            <div class="field-err" id="emailErr">⚠️ Email doesn't match your login account. Please enter your correct email.</div>
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+                <label>Your Email Address <span style="color:#ef4444;">*</span></label>
+                <span id="emailLockBadge" style="display:none; font-size:0.7rem; color:#22c55e; font-weight:700; background:rgba(34,197,94,0.1); padding:2px 8px; border-radius:99px; margin-bottom:6px;">🔒 SECURED & VERIFIED</span>
+            </div>
+            <input type="email" id="userEmailInput" readonly style="background:rgba(255,255,255,0.03); cursor:not-allowed;" placeholder="Login to see your email..."/>
+            <div class="field-note">Your account email is pre-filled and locked for security.</div>
+            <div class="field-err" id="emailErr">⚠️ Authentication error. Please try logging in again.</div>
           </div>
 
           <div class="field">
@@ -1298,11 +1301,16 @@
 
       const email  = window.Clerk.user.primaryEmailAddress?.emailAddress?.toLowerCase() || '';
       const userId = window.Clerk.user.id;
+      window._jfCurrentEmail = email; // Set global variable for verification
 
       const emailInput = document.getElementById('userEmailInput');
       if (emailInput) {
         emailInput.value = email;
+        emailInput.readOnly = true;
         emailInput.style.borderColor = 'var(--accent-color)';
+        emailInput.style.background = 'rgba(132,204,22,0.05)';
+        const badge = document.getElementById('emailLockBadge');
+        if (badge) badge.style.display = 'inline-block';
       }
       
       const emailNote = document.querySelector('#userEmailInput + .field-note');
