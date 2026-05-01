@@ -1351,7 +1351,24 @@
       }
 
       window.Clerk.addListener(({ user }) => {
-        if (!user) {
+        if (user) {
+          // If a user is detected later (after initial load), re-run restoration
+          const email = user.primaryEmailAddress?.emailAddress?.toLowerCase() || '';
+          const emailInput = document.getElementById('userEmailInput');
+          if (emailInput && email) {
+            emailInput.value = email;
+            emailInput.readOnly = true;
+            emailInput.style.borderColor = 'var(--accent-color)';
+            emailInput.style.background = 'rgba(132,204,22,0.05)';
+            window._jfCurrentEmail = email;
+            const badge = document.getElementById('emailLockBadge');
+            if (badge) badge.style.display = 'inline-block';
+            
+            const notice = document.getElementById('loginNotice');
+            if (notice) notice.style.display = 'none';
+          }
+        } else {
+          // If user logs out, reset the UI
           document.getElementById('payGate').style.display    = 'none';
           document.getElementById('pendingBar').style.display = 'none';
           document.getElementById('unlockedBar').classList.remove('show');
@@ -1360,6 +1377,15 @@
           document.getElementById('payGate').style.display = 'block';
           const notice = document.getElementById('loginNotice');
           if (notice) notice.style.display = 'flex';
+          
+          const emailInput = document.getElementById('userEmailInput');
+          if (emailInput) {
+            emailInput.value = '';
+            emailInput.readOnly = true;
+            emailInput.style.background = 'rgba(255,255,255,0.03)';
+            const badge = document.getElementById('emailLockBadge');
+            if (badge) badge.style.display = 'none';
+          }
         }
       });
     }
