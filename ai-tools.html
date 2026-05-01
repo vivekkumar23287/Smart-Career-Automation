@@ -1326,7 +1326,12 @@
                Admin will approve within a few hours. Refresh to check your status.
              </div>`;
         } else {
+          // No payment found - Show the payment gate
           document.getElementById('payGate').style.display = 'block';
+          document.getElementById('pendingBar').style.display = 'none';
+          document.getElementById('unlockedBar').classList.remove('show');
+          document.getElementById('toolArea').classList.remove('show');
+          if (typeof goToStep1 === 'function') goToStep1();
         }
       }
 
