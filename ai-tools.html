@@ -1283,7 +1283,7 @@
     async function restoreSession() {
       console.log("🔍 Checking session...");
       let retries = 0;
-      while ((!window.Clerk || !window.Clerk.isReady) && retries < 100) {
+      while (!window.CLERK_READY && retries < 100) {
         await new Promise(r => setTimeout(r, 100));
         retries++;
       }

@@ -27,6 +27,7 @@ async function initAuth() {
             }
         });
         console.log('✅ Clerk loaded');
+        window.CLERK_READY = true;
         
         if (window.Clerk.user) {
             currentUser = window.Clerk.user;
