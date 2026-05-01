@@ -1264,7 +1264,6 @@
 
    
     function unlockTools(isAdmin=false, paymentRecord=null) {
-
       document.getElementById('payGate').style.display    = 'none';
       document.getElementById('pendingBar').style.display = 'none';
       document.getElementById('unlockedBar').classList.add('show');
@@ -1276,32 +1275,37 @@
           '<span style="font-size:0.78rem;color:var(--accent-color);margin-left:8px;">⭐ Unlimited admin access</span>';
       } else if (paymentRecord) {
         document.getElementById('accessInfo').innerHTML = buildExpiryBadge(paymentRecord);
-      
         showExpiryAlerts(paymentRecord);
       }
-
       switchTab(activeTool);
     }
 
-   
     async function restoreSession() {
+      console.log("🔍 Checking session...");
       let retries = 0;
-      while (!window.Clerk && retries < 20) {
+      while ((!window.Clerk || !window.Clerk.isReady) && retries < 100) {
         await new Promise(r => setTimeout(r, 100));
         retries++;
       }
-      if (!window.Clerk) return;
+      
+      if (!window.Clerk) {
+        console.error("❌ Clerk failed to load after waiting.");
+        return;
+      }
 
-      if (!window.Clerk.user) {
+      const user = window.Clerk.user;
+      if (!user) {
+        console.log("ℹ️ No user logged in yet.");
         document.getElementById('payGate').style.display = 'block';
         const notice = document.getElementById('loginNotice');
         if (notice) notice.style.display = 'flex';
         return;
       }
 
-      const email  = window.Clerk.user.primaryEmailAddress?.emailAddress?.toLowerCase() || '';
-      const userId = window.Clerk.user.id;
-      window._jfCurrentEmail = email; // Set global variable for verification
+      console.log("✅ User detected:", user.primaryEmailAddress?.emailAddress);
+      const email  = user.primaryEmailAddress?.emailAddress?.toLowerCase() || '';
+      const userId = user.id;
+      window._jfCurrentEmail = email;
 
       const emailInput = document.getElementById('userEmailInput');
       if (emailInput) {
@@ -1325,16 +1329,13 @@
         unlockTools(true, null);
       } else {
         const approved = await checkPaymentInDB(userId, email);
-
         if (approved) {
           unlockTools(false, approved);
         } else {
           const pending = await checkPendingInDB(userId, email);
-
           if (pending) {
             const submittedStr = new Date(pending.created_at).toLocaleString('en-IN');
             document.getElementById('pendingBar').style.display = 'flex';
-            
             const pendingBar = document.getElementById('pendingBar');
             pendingBar.querySelector('div').innerHTML =
               `<strong style="font-size:0.92rem;color:#eab308;">Payment Under Review</strong>
@@ -1352,7 +1353,6 @@
 
       window.Clerk.addListener(({ user }) => {
         if (user) {
-          // If a user is detected later (after initial load), re-run restoration
           const email = user.primaryEmailAddress?.emailAddress?.toLowerCase() || '';
           const emailInput = document.getElementById('userEmailInput');
           if (emailInput && email) {
@@ -1363,12 +1363,10 @@
             window._jfCurrentEmail = email;
             const badge = document.getElementById('emailLockBadge');
             if (badge) badge.style.display = 'inline-block';
-            
             const notice = document.getElementById('loginNotice');
             if (notice) notice.style.display = 'none';
           }
         } else {
-          // If user logs out, reset the UI
           document.getElementById('payGate').style.display    = 'none';
           document.getElementById('pendingBar').style.display = 'none';
           document.getElementById('unlockedBar').classList.remove('show');
@@ -1377,7 +1375,6 @@
           document.getElementById('payGate').style.display = 'block';
           const notice = document.getElementById('loginNotice');
           if (notice) notice.style.display = 'flex';
-          
           const emailInput = document.getElementById('userEmailInput');
           if (emailInput) {
             emailInput.value = '';
