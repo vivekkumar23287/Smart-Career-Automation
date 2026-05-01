@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SMART CAREER AUTOMATION SYSTEM</title>
   <link rel="icon" type="image/png" href="images/Logo.png">
-  <meta name="description" content="AI-powered cover letter generator and interview question predictor. Unlock both tools for just ₹19."/>
-  <link rel="stylesheet" href="css/styles.css"/>
-  <link rel="stylesheet" href="css/auth.css"/>
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <meta name="description"
+    content="AI-powered cover letter generator and interview question predictor. Unlock both tools for just ₹19." />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/auth.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 
   <style>
     /* Screen Responsive Design */
@@ -23,286 +25,627 @@
 
     .ai-hero::before {
       content: '';
-      position: absolute; inset: 0;
+      position: absolute;
+      inset: 0;
       background: radial-gradient(ellipse 70% 50% at 50% 0%, var(--glow-primary) 0%, transparent 70%);
       pointer-events: none;
     }
 
     .ai-hero-badge {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: rgba(132,204,22,0.1);
-      border: 1px solid rgba(132,204,22,0.25);
-      border-radius: 99px; padding: 6px 16px;
-      font-size: 0.78rem; font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(132, 204, 22, 0.1);
+      border: 1px solid rgba(132, 204, 22, 0.25);
+      border-radius: 99px;
+      padding: 6px 16px;
+      font-size: 0.78rem;
+      font-weight: 600;
       color: var(--accent-color);
-      margin-bottom: 24px; letter-spacing: 0.03em;
+      margin-bottom: 24px;
+      letter-spacing: 0.03em;
     }
+
     .badge-dot {
-      width: 7px; height: 7px; border-radius: 50%;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
       background: var(--accent-color);
       animation: pulse 2s infinite;
     }
-    @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(.8)} }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        opacity: 1;
+        transform: scale(1)
+      }
+
+      50% {
+        opacity: .5;
+        transform: scale(.8)
+      }
+    }
 
     .ai-hero h1 {
       font-size: clamp(2.2rem, 5vw, 3.6rem);
-      font-weight: 800; line-height: 1.1;
+      font-weight: 800;
+      line-height: 1.1;
       letter-spacing: -0.02em;
       color: var(--text-main);
       margin-bottom: 16px;
     }
+
     .ai-hero h1 em {
       font-style: normal;
       color: var(--accent-color);
     }
+
     .ai-hero p {
-      font-size: 1.1rem; color: var(--text-muted);
-      max-width: 500px; margin: 0 auto 36px;
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      max-width: 500px;
+      margin: 0 auto 36px;
       line-height: 1.7;
     }
 
     /* Price  */
     .price-pill {
-      display: inline-flex; align-items: center; gap: 20px;
+      display: inline-flex;
+      align-items: center;
+      gap: 20px;
       background: var(--card-bg);
       border: 1px solid var(--glass-border);
-      border-radius: 16px; padding: 16px 28px;
+      border-radius: 16px;
+      padding: 16px 28px;
       box-shadow: var(--shadow-sm);
     }
+
     .price-big {
-      font-size: 2.6rem; font-weight: 800;
-      color: #22c55e; line-height: 1;
+      font-size: 2.6rem;
+      font-weight: 800;
+      color: #22c55e;
+      line-height: 1;
     }
-    .price-info strong { display: block; font-size: 0.95rem; font-weight: 700; color: var(--text-main); }
-    .price-info span { font-size: 0.8rem; color: var(--text-muted); }
+
+    .price-info strong {
+      display: block;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .price-info span {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
 
     /* MAIN CONTENT */
-    .ai-main { padding: 40px 0 80px; }
+    .ai-main {
+      padding: 40px 0 80px;
+    }
 
 
     .section-label {
-      font-size: 0.72rem; font-weight: 700;
-      letter-spacing: .1em; text-transform: uppercase;
-      color: var(--text-muted); margin-bottom: 14px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 14px;
     }
 
 
     .tool-grid {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
       margin-bottom: 32px;
     }
-    @media(max-width:600px){ .tool-grid{grid-template-columns:1fr;} }
+
+    @media(max-width:600px) {
+      .tool-grid {
+        grid-template-columns: 1fr;
+      }
+    }
 
     .tool-card {
       background: var(--card-bg);
       border: 2px solid var(--glass-border);
-      border-radius: 16px; padding: 24px 20px;
-      cursor: pointer; transition: all 0.25s;
-      position: relative; user-select: none;
+      border-radius: 16px;
+      padding: 24px 20px;
+      cursor: pointer;
+      transition: all 0.25s;
+      position: relative;
+      user-select: none;
       box-shadow: var(--shadow-sm);
     }
+
     .tool-card:hover {
       transform: translateY(-3px);
       box-shadow: var(--shadow-lg);
-      border-color: rgba(132,204,22,0.3);
+      border-color: rgba(132, 204, 22, 0.3);
     }
+
     .tool-card.selected {
       border-color: var(--accent-color);
       box-shadow: 0 0 0 1px var(--accent-color), var(--shadow-lg);
-      background: rgba(132,204,22,0.04);
+      background: rgba(132, 204, 22, 0.04);
     }
+
     .tool-card-top {
-      display: flex; align-items: flex-start; justify-content: space-between;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
       margin-bottom: 12px;
     }
-    .tool-emoji { font-size: 2rem; }
-    .tool-check {
-      width: 22px; height: 22px; border-radius: 50%;
-      border: 2px solid var(--glass-border);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 0.7rem; color: transparent; transition: all 0.2s;
+
+    .tool-emoji {
+      font-size: 2rem;
     }
+
+    .tool-check {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      border: 2px solid var(--glass-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      color: transparent;
+      transition: all 0.2s;
+    }
+
     .tool-card.selected .tool-check {
-      background: var(--accent-color); border-color: var(--accent-color);
+      background: var(--accent-color);
+      border-color: var(--accent-color);
       color: #000;
     }
-    .tool-name { font-size: 1rem; font-weight: 700; color: var(--text-main); margin-bottom: 6px; }
-    .tool-desc { font-size: 0.84rem; color: var(--text-muted); line-height: 1.55; }
+
+    .tool-name {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 6px;
+    }
+
+    .tool-desc {
+      font-size: 0.84rem;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
 
 
     .ai-panel {
       background: var(--card-bg);
       border: 1px solid var(--glass-border);
-      border-radius: 16px; padding: 28px;
+      border-radius: 16px;
+      padding: 28px;
       margin-bottom: 20px;
       box-shadow: var(--shadow-sm);
     }
+
     .panel-hdr {
-      display: flex; align-items: center; gap: 12px; margin-bottom: 22px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 22px;
     }
+
     .panel-icon {
-      width: 40px; height: 40px; border-radius: 10px;
-      background: rgba(132,204,22,0.12);
-      display: flex; align-items: center; justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: rgba(132, 204, 22, 0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
       font-size: 1.1rem;
     }
-    .panel-hdr h2 { font-size: 1rem; font-weight: 700; color: var(--text-main); }
-    .panel-hdr p { font-size: 0.8rem; color: var(--text-muted); margin-top: 2px; }
+
+    .panel-hdr h2 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .panel-hdr p {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
 
     /* UPI BOX */
     .upi-box {
-      background: rgba(132,204,22,0.04);
-      border: 1px solid rgba(132,204,22,0.2);
-      border-radius: 12px; padding: 16px 18px;
-      display: flex; align-items: center; justify-content: space-between;
-      flex-wrap: wrap; gap: 12px; margin-bottom: 20px;
+      background: rgba(132, 204, 22, 0.04);
+      border: 1px solid rgba(132, 204, 22, 0.2);
+      border-radius: 12px;
+      padding: 16px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 20px;
     }
-    .upi-left { display: flex; align-items: center; gap: 10px; }
+
+    .upi-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
     .upi-logo {
-      width: 38px; height: 38px; border-radius: 9px;
-      background: linear-gradient(135deg,#5b4cff,#00baf2);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 0.62rem; font-weight: 800; color: #fff; letter-spacing: .02em;
+      width: 38px;
+      height: 38px;
+      border-radius: 9px;
+      background: linear-gradient(135deg, #5b4cff, #00baf2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.62rem;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: .02em;
     }
-    .upi-id strong { display: block; font-size: 0.9rem; font-weight: 700; color: var(--text-main); }
-    .upi-id span { font-size: 0.75rem; color: var(--text-muted); }
+
+    .upi-id strong {
+      display: block;
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .upi-id span {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
     .amt-chip {
-      background: rgba(34,197,94,0.12);
-      border: 1px solid rgba(34,197,94,0.25);
-      border-radius: 10px; padding: 10px 18px; text-align: center;
+      background: rgba(34, 197, 94, 0.12);
+      border: 1px solid rgba(34, 197, 94, 0.25);
+      border-radius: 10px;
+      padding: 10px 18px;
+      text-align: center;
     }
-    .amt-big { font-size: 1.6rem; font-weight: 800; color: #22c55e; line-height: 1; }
-    .amt-lbl { font-size: 0.7rem; color: var(--text-muted); margin-top: 2px; }
+
+    .amt-big {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: #22c55e;
+      line-height: 1;
+    }
+
+    .amt-lbl {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
 
     /* QR Code */
-    .qr-row { display: flex; gap: 20px; align-items: flex-start; flex-wrap: wrap; margin-bottom: 20px; }
+    .qr-row {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+
     .qr-wrap {
-      background: #fff; border-radius: 12px; padding: 10px;
-      width: 116px; height: 116px; flex-shrink: 0;
-      display: flex; align-items: center; justify-content: center;
+      background: #fff;
+      border-radius: 12px;
+      padding: 10px;
+      width: 116px;
+      height: 116px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       box-shadow: var(--shadow-sm);
     }
-    .qr-wrap img { width: 96px; height: 96px; border-radius: 4px; }
-    .qr-steps { flex: 1; min-width: 200px; }
-    .qr-steps h4 { font-size: 0.9rem; font-weight: 700; color: var(--text-main); margin-bottom: 10px; }
-    .steps-list { list-style: none; display: flex; flex-direction: column; gap: 7px; }
-    .steps-list li { font-size: 0.82rem; color: var(--text-muted); display: flex; gap: 8px; line-height: 1.45; }
+
+    .qr-wrap img {
+      width: 96px;
+      height: 96px;
+      border-radius: 4px;
+    }
+
+    .qr-steps {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .qr-steps h4 {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 10px;
+    }
+
+    .steps-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    .steps-list li {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      display: flex;
+      gap: 8px;
+      line-height: 1.45;
+    }
+
     .step-n {
-      min-width: 20px; height: 20px; border-radius: 50%;
-      background: rgba(132,204,22,0.15); color: var(--accent-color);
-      font-size: 0.68rem; font-weight: 700;
-      display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0; margin-top: 1px;
+      min-width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: rgba(132, 204, 22, 0.15);
+      color: var(--accent-color);
+      font-size: 0.68rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
     }
 
 
-    .field { margin-bottom: 16px; }
+    .field {
+      margin-bottom: 16px;
+    }
+
     .field label {
-      display: block; font-size: 0.75rem; font-weight: 600;
-      color: var(--text-muted); margin-bottom: 6px;
-      letter-spacing: .06em; text-transform: uppercase;
+      display: block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+      letter-spacing: .06em;
+      text-transform: uppercase;
     }
-    .field input, .field textarea, .field select {
+
+    .field input,
+    .field textarea,
+    .field select {
       width: 100%;
       background: var(--surface-2);
       border: 1px solid var(--glass-border);
       border-radius: 10px;
       color: var(--text-main);
       font-family: 'Inter', sans-serif;
-      font-size: 0.92rem; padding: 10px 14px;
-      outline: none; resize: vertical;
+      font-size: 0.92rem;
+      padding: 10px 14px;
+      outline: none;
+      resize: vertical;
       transition: border-color 0.2s, box-shadow 0.2s;
     }
-    .field input:focus, .field textarea:focus, .field select:focus {
+
+    .field input:focus,
+    .field textarea:focus,
+    .field select:focus {
       border-color: var(--accent-color);
-      box-shadow: 0 0 0 3px rgba(132,204,22,0.15);
+      box-shadow: 0 0 0 3px rgba(132, 204, 22, 0.15);
     }
-    .field textarea { min-height: 100px; line-height: 1.6; }
-    .field select option { background: var(--card-bg); }
 
-    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-    .form-grid .full { grid-column: 1/-1; }
-    @media(max-width:640px){ .form-grid{grid-template-columns:1fr;} .form-grid .full{grid-column:1;} }
+    .field textarea {
+      min-height: 100px;
+      line-height: 1.6;
+    }
 
-    .input-row { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 8px; }
-    .input-row input { flex: 1; min-width: 200px; }
+    .field select option {
+      background: var(--card-bg);
+    }
 
-    .field-err { font-size: 0.78rem; color: #ef4444; margin-top: 5px; display: none; }
-    .field-err.show { display: block; }
-    .field-note { font-size: 0.76rem; color: var(--text-muted); margin-top: 5px; }
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .form-grid .full {
+      grid-column: 1/-1;
+    }
+
+    @media(max-width:640px) {
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .form-grid .full {
+        grid-column: 1;
+      }
+    }
+
+    .input-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 8px;
+    }
+
+    .input-row input {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .field-err {
+      font-size: 0.78rem;
+      color: #ef4444;
+      margin-top: 5px;
+      display: none;
+    }
+
+    .field-err.show {
+      display: block;
+    }
+
+    .field-note {
+      font-size: 0.76rem;
+      color: var(--text-muted);
+      margin-top: 5px;
+    }
 
 
-    .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
     .chip {
-      padding: 6px 14px; border-radius: 99px;
+      padding: 6px 14px;
+      border-radius: 99px;
       border: 1px solid var(--glass-border);
-      background: transparent; color: var(--text-muted);
-      font-family: 'Inter', sans-serif; font-size: 0.8rem; font-weight: 500;
-      cursor: pointer; transition: all 0.18s;
+      background: transparent;
+      color: var(--text-muted);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.18s;
     }
-    .chip:hover { border-color: var(--accent-color); color: var(--text-main); }
+
+    .chip:hover {
+      border-color: var(--accent-color);
+      color: var(--text-main);
+    }
+
     .chip.on {
-      background: rgba(132,204,22,0.15);
-      border-color: var(--accent-color); color: var(--accent-color);
+      background: rgba(132, 204, 22, 0.15);
+      border-color: var(--accent-color);
+      color: var(--accent-color);
     }
 
     /* Buttons */
     .btn-ai {
-      width: 100%; padding: 14px 20px; margin-top: 10px;
-      background: var(--accent-color); color: #000;
-      border: none; border-radius: 99px;
-      font-family: 'Inter', sans-serif; font-size: 1rem; font-weight: 700;
-      cursor: pointer; transition: all 0.3s;
+      width: 100%;
+      padding: 14px 20px;
+      margin-top: 10px;
+      background: var(--accent-color);
+      color: #000;
+      border: none;
+      border-radius: 99px;
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s;
       box-shadow: 0 4px 14px var(--glow-primary);
-      display: flex; align-items: center; justify-content: center; gap: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
     }
-    .btn-ai:hover { transform: translateY(-2px); box-shadow: 0 6px 20px var(--accent-glow); background: var(--accent-vibrant); }
-    .btn-ai:disabled { opacity: .45; cursor: not-allowed; transform: none; box-shadow: none; }
+
+    .btn-ai:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px var(--accent-glow);
+      background: var(--accent-vibrant);
+    }
+
+    .btn-ai:disabled {
+      opacity: .45;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
 
     .btn-verify {
-      background: var(--accent-color); color: #000;
-      border: none; padding: 10px 22px; border-radius: 99px;
-      font-family: 'Inter', sans-serif; font-size: 0.88rem; font-weight: 700;
-      cursor: pointer; transition: all 0.3s; white-space: nowrap;
+      background: var(--accent-color);
+      color: #000;
+      border: none;
+      padding: 10px 22px;
+      border-radius: 99px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s;
+      white-space: nowrap;
       box-shadow: 0 4px 12px var(--glow-primary);
     }
-    .btn-verify:hover { background: var(--accent-vibrant); transform: translateY(-1px); }
+
+    .btn-verify:hover {
+      background: var(--accent-vibrant);
+      transform: translateY(-1px);
+    }
 
     .btn-action {
       padding: 8px 16px;
-      background: var(--surface-2); border: 1px solid var(--glass-border);
-      border-radius: 99px; color: var(--text-muted);
-      font-family: 'Inter', sans-serif; font-size: 0.82rem; font-weight: 500;
-      cursor: pointer; transition: all 0.18s;
-      display: inline-flex; align-items: center; gap: 6px;
+      background: var(--surface-2);
+      border: 1px solid var(--glass-border);
+      border-radius: 99px;
+      color: var(--text-muted);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.18s;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
     }
-    .btn-action:hover { border-color: var(--accent-color); color: var(--text-main); }
-    .btn-action.ok { border-color: #22c55e; color: #22c55e; }
+
+    .btn-action:hover {
+      border-color: var(--accent-color);
+      color: var(--text-main);
+    }
+
+    .btn-action.ok {
+      border-color: #22c55e;
+      color: #22c55e;
+    }
 
 
     .unlocked-bar {
-      display: none; align-items: center; gap: 12px;
-      background: rgba(34,197,94,0.07);
-      border: 1px solid rgba(34,197,94,0.2);
-      border-radius: 12px; padding: 14px 20px; margin-bottom: 24px;
+      display: none;
+      align-items: center;
+      gap: 12px;
+      background: rgba(34, 197, 94, 0.07);
+      border: 1px solid rgba(34, 197, 94, 0.2);
+      border-radius: 12px;
+      padding: 14px 20px;
+      margin-bottom: 24px;
     }
-    .unlocked-bar.show { display: flex; }
+
+    .unlocked-bar.show {
+      display: flex;
+    }
+
     .admin-chip {
       display: none;
-      background: rgba(132,204,22,0.12); border: 1px solid rgba(132,204,22,0.3);
-      border-radius: 99px; padding: 2px 10px;
-      font-size: 0.72rem; font-weight: 700; color: var(--accent-color);
+      background: rgba(132, 204, 22, 0.12);
+      border: 1px solid rgba(132, 204, 22, 0.3);
+      border-radius: 99px;
+      padding: 2px 10px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--accent-color);
     }
-    .admin-chip.show { display: inline-block; }
+
+    .admin-chip.show {
+      display: inline-block;
+    }
 
 
-    #toolArea { display: none; }
-    #toolArea.show { display: block; }
+    #toolArea {
+      display: none;
+    }
+
+    #toolArea.show {
+      display: block;
+    }
 
     .tool-wrap {
       background: var(--card-bg);
       border: 1px solid var(--glass-border);
-      border-radius: 16px; overflow: hidden;
+      border-radius: 16px;
+      overflow: hidden;
       box-shadow: var(--shadow-sm);
     }
 
@@ -311,130 +654,348 @@
       background: var(--surface-2);
       border-bottom: 1px solid var(--glass-border);
     }
+
     .tab-btn {
-      flex: 1; padding: 14px 20px; border: none;
-      background: transparent; color: var(--text-muted);
-      font-family: 'Inter', sans-serif; font-size: 0.9rem; font-weight: 600;
-      cursor: pointer; transition: all 0.2s;
+      flex: 1;
+      padding: 14px 20px;
+      border: none;
+      background: transparent;
+      color: var(--text-muted);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
       border-bottom: 2px solid transparent;
-      display: flex; align-items: center; justify-content: center; gap: 7px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
     }
-    .tab-btn:hover { color: var(--text-main); background: rgba(132,204,22,0.04); }
+
+    .tab-btn:hover {
+      color: var(--text-main);
+      background: rgba(132, 204, 22, 0.04);
+    }
+
     .tab-btn.active {
       color: var(--accent-color);
       border-bottom-color: var(--accent-color);
-      background: rgba(132,204,22,0.06);
+      background: rgba(132, 204, 22, 0.06);
     }
 
-    .tab-panel { padding: 28px; }
+    .tab-panel {
+      padding: 28px;
+    }
 
 
-    .loader { display: none; align-items: center; gap: 8px; color: var(--text-muted); font-size: 0.85rem; margin-top: 12px; }
-    .loader.show { display: flex; }
+    .loader {
+      display: none;
+      align-items: center;
+      gap: 8px;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      margin-top: 12px;
+    }
+
+    .loader.show {
+      display: flex;
+    }
+
     .dots span {
-      display: inline-block; width: 5px; height: 5px; border-radius: 50%;
-      background: var(--accent-color); animation: bob 1.1s infinite;
+      display: inline-block;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--accent-color);
+      animation: bob 1.1s infinite;
     }
-    .dots span:nth-child(2){animation-delay:.18s} .dots span:nth-child(3){animation-delay:.36s}
-    @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+
+    .dots span:nth-child(2) {
+      animation-delay: .18s
+    }
+
+    .dots span:nth-child(3) {
+      animation-delay: .36s
+    }
+
+    @keyframes bob {
+
+      0%,
+      100% {
+        transform: translateY(0)
+      }
+
+      50% {
+        transform: translateY(-5px)
+      }
+    }
 
 
-    .out-meta { display: flex; justify-content: space-between; align-items: center; margin: 18px 0 8px; }
-    .word-count { font-size: 0.78rem; color: var(--text-muted); }
+    .out-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 18px 0 8px;
+    }
+
+    .word-count {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
     .ready-tag {
-      font-size: 0.72rem; padding: 3px 10px; border-radius: 99px;
-      background: rgba(34,197,94,0.1); border: 1px solid rgba(34,197,94,0.25);
-      color: #22c55e; display: none;
+      font-size: 0.72rem;
+      padding: 3px 10px;
+      border-radius: 99px;
+      background: rgba(34, 197, 94, 0.1);
+      border: 1px solid rgba(34, 197, 94, 0.25);
+      color: #22c55e;
+      display: none;
     }
-    .ready-tag.show { display: inline-block; }
+
+    .ready-tag.show {
+      display: inline-block;
+    }
 
     .output-box {
       background: var(--surface-2);
       border: 1px solid var(--glass-border);
-      border-radius: 12px; padding: 20px;
-      min-height: 180px; font-size: 0.92rem;
-      line-height: 1.8; color: var(--text-main);
-      white-space: pre-wrap; overflow-y: auto;
+      border-radius: 12px;
+      padding: 20px;
+      min-height: 180px;
+      font-size: 0.92rem;
+      line-height: 1.8;
+      color: var(--text-main);
+      white-space: pre-wrap;
+      overflow-y: auto;
     }
+
     .output-box.empty {
-      display: flex; align-items: center; justify-content: center;
-      color: var(--text-muted); font-size: 0.85rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      font-size: 0.85rem;
     }
-    .out-actions { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px; }
+
+    .out-actions {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 12px;
+    }
 
 
-    .stats-row { display: flex; gap: 10px; margin-bottom: 18px; }
+    .stats-row {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+
     .stat {
-      flex: 1; background: var(--surface-2);
+      flex: 1;
+      background: var(--surface-2);
       border: 1px solid var(--glass-border);
-      border-radius: 12px; padding: 12px; text-align: center;
+      border-radius: 12px;
+      padding: 12px;
+      text-align: center;
     }
-    .stat-n { font-size: 1.6rem; font-weight: 800; color: var(--accent-color); line-height: 1; }
-    .stat-l { font-size: 0.72rem; color: var(--text-muted); margin-top: 3px; }
+
+    .stat-n {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--accent-color);
+      line-height: 1;
+    }
+
+    .stat-l {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      margin-top: 3px;
+    }
 
 
-    .q-list { display: flex; flex-direction: column; gap: 10px; }
+    .q-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
     .q-card {
       background: var(--surface-2);
       border: 1px solid var(--glass-border);
-      border-radius: 12px; overflow: hidden; transition: border-color 0.2s;
+      border-radius: 12px;
+      overflow: hidden;
+      transition: border-color 0.2s;
     }
-    .q-card:hover { border-color: rgba(132,204,22,0.3); }
+
+    .q-card:hover {
+      border-color: rgba(132, 204, 22, 0.3);
+    }
+
     .q-head {
-      display: flex; align-items: center; gap: 10px;
-      padding: 14px 16px; cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 16px;
+      cursor: pointer;
     }
+
     .q-num {
-      min-width: 28px; height: 28px; border-radius: 8px;
-      background: rgba(132,204,22,0.12); color: var(--accent-color);
-      font-size: 0.75rem; font-weight: 700;
-      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+      min-width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      background: rgba(132, 204, 22, 0.12);
+      color: var(--accent-color);
+      font-size: 0.75rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
     }
-    .q-text { flex: 1; font-size: 0.9rem; font-weight: 500; line-height: 1.4; color: var(--text-main); }
-    .q-badge { font-size: 0.7rem; padding: 3px 9px; border-radius: 99px; white-space: nowrap; font-weight: 600; }
-    .beh { background: rgba(234,179,8,.12); border: 1px solid rgba(234,179,8,.2); color: #eab308; }
-    .tec { background: rgba(99,102,241,.12); border: 1px solid rgba(99,102,241,.2); color: #818cf8; }
-    .sit { background: rgba(34,197,94,.12); border: 1px solid rgba(34,197,94,.2); color: #22c55e; }
-    .gen { background: rgba(59,130,246,.12); border: 1px solid rgba(59,130,246,.2); color: #60a5fa; }
-    .q-arr { color: var(--text-muted); font-size: 0.7rem; transition: transform 0.2s; flex-shrink: 0; }
-    .q-card.open .q-arr { transform: rotate(180deg); }
+
+    .q-text {
+      flex: 1;
+      font-size: 0.9rem;
+      font-weight: 500;
+      line-height: 1.4;
+      color: var(--text-main);
+    }
+
+    .q-badge {
+      font-size: 0.7rem;
+      padding: 3px 9px;
+      border-radius: 99px;
+      white-space: nowrap;
+      font-weight: 600;
+    }
+
+    .beh {
+      background: rgba(234, 179, 8, .12);
+      border: 1px solid rgba(234, 179, 8, .2);
+      color: #eab308;
+    }
+
+    .tec {
+      background: rgba(99, 102, 241, .12);
+      border: 1px solid rgba(99, 102, 241, .2);
+      color: #818cf8;
+    }
+
+    .sit {
+      background: rgba(34, 197, 94, .12);
+      border: 1px solid rgba(34, 197, 94, .2);
+      color: #22c55e;
+    }
+
+    .gen {
+      background: rgba(59, 130, 246, .12);
+      border: 1px solid rgba(59, 130, 246, .2);
+      color: #60a5fa;
+    }
+
+    .q-arr {
+      color: var(--text-muted);
+      font-size: 0.7rem;
+      transition: transform 0.2s;
+      flex-shrink: 0;
+    }
+
+    .q-card.open .q-arr {
+      transform: rotate(180deg);
+    }
+
     .q-ans {
-      display: none; padding: 0 16px 14px 54px;
-      font-size: 0.86rem; line-height: 1.75; color: var(--text-muted);
+      display: none;
+      padding: 0 16px 14px 54px;
+      font-size: 0.86rem;
+      line-height: 1.75;
+      color: var(--text-muted);
       border-top: 1px solid var(--glass-border);
     }
-    .q-card.open .q-ans { display: block; padding-top: 12px; }
+
+    .q-card.open .q-ans {
+      display: block;
+      padding-top: 12px;
+    }
+
     .ans-lbl {
-      font-size: 0.7rem; text-transform: uppercase; letter-spacing: .06em;
-      color: var(--accent-color); font-weight: 700; margin-bottom: 7px;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      color: var(--accent-color);
+      font-weight: 700;
+      margin-bottom: 7px;
     }
 
 
     .err-box {
-      background: rgba(239,68,68,.07); border: 1px solid rgba(239,68,68,.2);
-      border-radius: 12px; padding: 18px 20px;
-      font-size: 0.85rem; color: #fca5a5; line-height: 1.6;
+      background: rgba(239, 68, 68, .07);
+      border: 1px solid rgba(239, 68, 68, .2);
+      border-radius: 12px;
+      padding: 18px 20px;
+      font-size: 0.85rem;
+      color: #fca5a5;
+      line-height: 1.6;
     }
-    .err-box strong { display: block; margin-bottom: 5px; }
-    .err-box small { color: var(--text-muted); font-size: 0.78rem; }
+
+    .err-box strong {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .err-box small {
+      color: var(--text-muted);
+      font-size: 0.78rem;
+    }
 
     .tip-box {
-      background: rgba(132,204,22,0.06); border: 1px solid rgba(132,204,22,0.15);
-      border-radius: 12px; padding: 14px 16px; margin-top: 16px;
-      font-size: 0.83rem; color: var(--text-muted); line-height: 1.6;
+      background: rgba(132, 204, 22, 0.06);
+      border: 1px solid rgba(132, 204, 22, 0.15);
+      border-radius: 12px;
+      padding: 14px 16px;
+      margin-top: 16px;
+      font-size: 0.83rem;
+      color: var(--text-muted);
+      line-height: 1.6;
     }
-    .tip-box strong { display: block; font-size: 0.74rem; text-transform: uppercase; letter-spacing: .05em; color: var(--accent-color); margin-bottom: 3px; }
+
+    .tip-box strong {
+      display: block;
+      font-size: 0.74rem;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      color: var(--accent-color);
+      margin-bottom: 3px;
+    }
 
 
     @keyframes alertPulse {
-      0%,100% { box-shadow: 0 0 0 0 rgba(239,68,68,0); }
-      50%      { box-shadow: 0 0 0 6px rgba(239,68,68,0.12); }
+
+      0%,
+      100% {
+        box-shadow: 0 0 0 0 rgba(239, 68, 68, 0);
+      }
+
+      50% {
+        box-shadow: 0 0 0 6px rgba(239, 68, 68, 0.12);
+      }
     }
 
 
-    [data-theme="dark"] .output-box { background: var(--surface-2); }
-    [data-theme="dark"] .upi-box { background: rgba(132,204,22,0.04); }
-    [data-theme="dark"] .qr-wrap { box-shadow: none; }
+    [data-theme="dark"] .output-box {
+      background: var(--surface-2);
+    }
+
+    [data-theme="dark"] .upi-box {
+      background: rgba(132, 204, 22, 0.04);
+    }
+
+    [data-theme="dark"] .qr-wrap {
+      box-shadow: none;
+    }
 
 
     @media (max-width: 768px) {
@@ -443,14 +1004,17 @@
       .ai-hero {
         padding: 100px 0 40px;
       }
+
       .ai-hero h1 {
         font-size: 1.9rem;
         line-height: 1.15;
       }
+
       .ai-hero p {
         font-size: 0.95rem;
         padding: 0 8px;
       }
+
       .price-pill {
         flex-direction: column;
         gap: 10px;
@@ -459,43 +1023,86 @@
         max-width: 280px;
         text-align: center;
       }
-      .price-info { text-align: center; }
+
+      .price-info {
+        text-align: center;
+      }
 
 
       .tool-grid {
         grid-template-columns: 1fr;
         gap: 12px;
       }
+
       .tool-card {
         padding: 18px 16px;
       }
-      .tool-card-top { margin-bottom: 8px; }
-      .tool-emoji { font-size: 1.6rem; }
-      .tool-name { font-size: 0.95rem; }
-      .tool-desc { font-size: 0.82rem; }
+
+      .tool-card-top {
+        margin-bottom: 8px;
+      }
+
+      .tool-emoji {
+        font-size: 1.6rem;
+      }
+
+      .tool-name {
+        font-size: 0.95rem;
+      }
+
+      .tool-desc {
+        font-size: 0.82rem;
+      }
 
 
       .ai-panel {
         padding: 20px 16px;
         border-radius: 14px;
       }
-      .panel-hdr { margin-bottom: 16px; gap: 10px; }
-      .panel-hdr h2 { font-size: 0.95rem; }
-      .panel-hdr p { font-size: 0.76rem; }
-      .panel-icon { width: 36px; height: 36px; font-size: 1rem; flex-shrink: 0; }
+
+      .panel-hdr {
+        margin-bottom: 16px;
+        gap: 10px;
+      }
+
+      .panel-hdr h2 {
+        font-size: 0.95rem;
+      }
+
+      .panel-hdr p {
+        font-size: 0.76rem;
+      }
+
+      .panel-icon {
+        width: 36px;
+        height: 36px;
+        font-size: 1rem;
+        flex-shrink: 0;
+      }
 
 
-      #loginGate { padding: 28px 20px !important; }
-      #loginGate h2 { font-size: 1.15rem !important; }
-      #loginGate p { font-size: 0.85rem !important; }
+      #loginGate {
+        padding: 28px 20px !important;
+      }
 
-  
+      #loginGate h2 {
+        font-size: 1.15rem !important;
+      }
+
+      #loginGate p {
+        font-size: 0.85rem !important;
+      }
+
+
       .upi-box {
         flex-direction: column;
         align-items: flex-start;
         gap: 14px;
       }
-      .amt-chip { align-self: flex-end; }
+
+      .amt-chip {
+        align-self: flex-end;
+      }
 
 
       .qr-row {
@@ -503,24 +1110,49 @@
         align-items: center;
         gap: 16px;
       }
+
       .qr-wrap {
-        width: 130px; height: 130px;
+        width: 130px;
+        height: 130px;
         margin: 0 auto;
       }
-      .qr-wrap img { width: 110px; height: 110px; }
-      .qr-steps { min-width: unset; width: 100%; }
-      .qr-steps h4 { text-align: center; }
+
+      .qr-wrap img {
+        width: 110px;
+        height: 110px;
+      }
+
+      .qr-steps {
+        min-width: unset;
+        width: 100%;
+      }
+
+      .qr-steps h4 {
+        text-align: center;
+      }
 
 
       .input-row {
         flex-direction: column;
         gap: 10px;
       }
-      .input-row input { min-width: unset; width: 100%; }
-      .btn-verify { width: 100%; padding: 12px 20px; text-align: center; }
+
+      .input-row input {
+        min-width: unset;
+        width: 100%;
+      }
+
+      .btn-verify {
+        width: 100%;
+        padding: 12px 20px;
+        text-align: center;
+      }
 
 
-      .unlocked-bar { padding: 12px 16px; gap: 10px; }
+      .unlocked-bar {
+        padding: 12px 16px;
+        gap: 10px;
+      }
 
 
       .tab-btn {
@@ -530,20 +1162,37 @@
         flex-direction: column;
         line-height: 1.2;
       }
-      .tab-btn span.tab-emoji { font-size: 1rem; }
+
+      .tab-btn span.tab-emoji {
+        font-size: 1rem;
+      }
 
 
-      .tab-panel { padding: 18px 14px; }
-
-     
-      .form-grid { grid-template-columns: 1fr; gap: 12px; }
-      .form-grid .full { grid-column: 1; }
+      .tab-panel {
+        padding: 18px 14px;
+      }
 
 
-      .chip { padding: 5px 11px; font-size: 0.76rem; }
+      .form-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+
+      .form-grid .full {
+        grid-column: 1;
+      }
 
 
-      .btn-ai { font-size: 0.95rem; padding: 13px 16px; }
+      .chip {
+        padding: 5px 11px;
+        font-size: 0.76rem;
+      }
+
+
+      .btn-ai {
+        font-size: 0.95rem;
+        padding: 13px 16px;
+      }
 
 
       .output-box {
@@ -553,56 +1202,123 @@
       }
 
 
-      .out-actions { gap: 6px; }
-      .btn-action { font-size: 0.78rem; padding: 7px 12px; }
+      .out-actions {
+        gap: 6px;
+      }
 
-  
-      .stats-row { gap: 8px; }
-      .stat { padding: 10px 6px; }
-      .stat-n { font-size: 1.3rem; }
-      .stat-l { font-size: 0.65rem; }
+      .btn-action {
+        font-size: 0.78rem;
+        padding: 7px 12px;
+      }
 
-     
-      .q-head { padding: 12px 12px; gap: 8px; }
-      .q-num { min-width: 24px; height: 24px; font-size: 0.68rem; }
-      .q-text { font-size: 0.85rem; }
-      .q-badge { display: none; } 
-      .q-ans { padding: 0 12px 12px 12px; font-size: 0.83rem; }
-      .q-card.open .q-ans { padding-top: 10px; }
 
-   
-      .tip-box { padding: 12px; font-size: 0.8rem; }
+      .stats-row {
+        gap: 8px;
+      }
 
-    
-      .ai-main { padding: 24px 0 60px; }
+      .stat {
+        padding: 10px 6px;
+      }
 
-      
-      .container { padding: 0 16px; }
+      .stat-n {
+        font-size: 1.3rem;
+      }
+
+      .stat-l {
+        font-size: 0.65rem;
+      }
+
+
+      .q-head {
+        padding: 12px 12px;
+        gap: 8px;
+      }
+
+      .q-num {
+        min-width: 24px;
+        height: 24px;
+        font-size: 0.68rem;
+      }
+
+      .q-text {
+        font-size: 0.85rem;
+      }
+
+      .q-badge {
+        display: none;
+      }
+
+      .q-ans {
+        padding: 0 12px 12px 12px;
+        font-size: 0.83rem;
+      }
+
+      .q-card.open .q-ans {
+        padding-top: 10px;
+      }
+
+
+      .tip-box {
+        padding: 12px;
+        font-size: 0.8rem;
+      }
+
+
+      .ai-main {
+        padding: 24px 0 60px;
+      }
+
+
+      .container {
+        padding: 0 16px;
+      }
     }
 
-   
+
     @media (max-width: 400px) {
-      .ai-hero { padding: 90px 0 32px; }
-      .ai-hero h1 { font-size: 1.6rem; }
-      .ai-hero-badge { font-size: 0.72rem; padding: 5px 12px; }
-      .price-big { font-size: 2rem; }
-      .tab-btn { font-size: 0.72rem; padding: 10px 6px; }
-      .ai-panel { padding: 16px 12px; border-radius: 12px; }
+      .ai-hero {
+        padding: 90px 0 32px;
+      }
+
+      .ai-hero h1 {
+        font-size: 1.6rem;
+      }
+
+      .ai-hero-badge {
+        font-size: 0.72rem;
+        padding: 5px 12px;
+      }
+
+      .price-big {
+        font-size: 2rem;
+      }
+
+      .tab-btn {
+        font-size: 0.72rem;
+        padding: 10px 6px;
+      }
+
+      .ai-panel {
+        padding: 16px 12px;
+        border-radius: 12px;
+      }
     }
   </style>
 </head>
+
 <body>
 
- 
+
   <nav class="navbar">
     <div class="container">
       <div class="nav-content">
         <div class="logo">
           <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="3" y="3" width="18" height="18" rx="6" stroke="currentColor" stroke-width="2.5"/>
-            <path d="M9 12L11 14L15 10" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <rect x="3" y="3" width="18" height="18" rx="6" stroke="currentColor" stroke-width="2.5" />
+            <path d="M9 12L11 14L15 10" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+              stroke-linejoin="round" />
           </svg>
-          <span>JobFlow</span>
+          <span>Job AI Tool</span>
         </div>
         <ul class="nav-links">
           <li><a href="index.html">Home</a></li>
@@ -612,7 +1328,8 @@
         </ul>
         <div class="nav-buttons">
           <button class="theme-toggle" id="theme-toggle" aria-label="Toggle Dark Mode">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="moon-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round" class="moon-icon">
               <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
             </svg>
           </button>
@@ -622,11 +1339,11 @@
     </div>
   </nav>
 
- 
+
   <section class="ai-hero">
     <div class="container">
       <div class="ai-hero-badge"><span class="badge-dot"></span> AI-Powered · Free to Use</div>
-      <h1>Two <em>AI Tools</em> to<br/>Land Your Dream Job</h1>
+      <h1>Two <em>AI Tools</em> to<br />Land Your Dream Job</h1>
       <p>Generate tailored cover letters and predict interview questions — powered by AI. Pay once, use for 30 days.</p>
       <div class="price-pill">
         <div class="price-big">₹19</div>
@@ -638,11 +1355,11 @@
     </div>
   </section>
 
- 
+
   <div class="ai-main">
     <div class="container">
 
-     
+
       <div class="section-label">Choose your tool</div>
       <div class="tool-grid">
         <div class="tool-card selected" id="cardCL" onclick="selectTool('cl')">
@@ -651,7 +1368,8 @@
             <div class="tool-check">✓</div>
           </div>
           <div class="tool-name">Cover Letter Generator</div>
-          <div class="tool-desc">Paste a job description and get a tailored, professional cover letter in seconds with tone control.</div>
+          <div class="tool-desc">Paste a job description and get a tailored, professional cover letter in seconds with
+            tone control.</div>
         </div>
         <div class="tool-card" id="cardIQ" onclick="selectTool('iq')">
           <div class="tool-card-top">
@@ -659,7 +1377,8 @@
             <div class="tool-check"></div>
           </div>
           <div class="tool-name">Interview Question Predictor</div>
-          <div class="tool-desc">Predict the exact questions an interviewer will ask — with sample STAR-method answers included.</div>
+          <div class="tool-desc">Predict the exact questions an interviewer will ask — with sample STAR-method answers
+            included.</div>
         </div>
       </div>
 
@@ -669,25 +1388,37 @@
           <div class="panel-icon">💳</div>
           <div>
             <h2>Pay ₹19 · 30-Day Access</h2>
-            <p>Upload your UPI payment screenshot + Transaction ID — access granted after verification (usually within a few hours)</p>
+            <p>Upload your UPI payment screenshot + Transaction ID — access granted after verification (usually within a
+              few hours)</p>
           </div>
         </div>
 
         <!-- Progress Steps -->
-        <div id="pgSteps" style="display:flex;gap:0;margin-bottom:24px;border-radius:12px;overflow:hidden;border:1px solid var(--glass-border);">
-          <div class="pg-step active" id="pgStep1" style="flex:1;padding:10px 14px;text-align:center;font-size:0.78rem;font-weight:600;background:rgba(132,204,22,0.12);color:var(--accent-color);border-right:1px solid var(--glass-border);">① Pay via UPI</div>
-          <div class="pg-step" id="pgStep2" style="flex:1;padding:10px 14px;text-align:center;font-size:0.78rem;font-weight:600;color:var(--text-muted);border-right:1px solid var(--glass-border);">② Submit Details</div>
-          <div class="pg-step" id="pgStep3" style="flex:1;padding:10px 14px;text-align:center;font-size:0.78rem;font-weight:600;color:var(--text-muted);">③ Wait for Approval</div>
+        <div id="pgSteps"
+          style="display:flex;gap:0;margin-bottom:24px;border-radius:12px;overflow:hidden;border:1px solid var(--glass-border);">
+          <div class="pg-step active" id="pgStep1"
+            style="flex:1;padding:10px 14px;text-align:center;font-size:0.78rem;font-weight:600;background:rgba(132,204,22,0.12);color:var(--accent-color);border-right:1px solid var(--glass-border);">
+            ① Pay via UPI</div>
+          <div class="pg-step" id="pgStep2"
+            style="flex:1;padding:10px 14px;text-align:center;font-size:0.78rem;font-weight:600;color:var(--text-muted);border-right:1px solid var(--glass-border);">
+            ② Submit Details</div>
+          <div class="pg-step" id="pgStep3"
+            style="flex:1;padding:10px 14px;text-align:center;font-size:0.78rem;font-weight:600;color:var(--text-muted);">
+            ③ Wait for Approval</div>
         </div>
 
         <!-- Login Notice (Shown Only If User Not Logged In) -->
-        <div id="loginNotice" style="display:none;align-items:center;gap:12px;background:rgba(99,102,241,0.08);border:1px solid rgba(99,102,241,0.25);border-radius:12px;padding:14px 18px;margin-bottom:18px;flex-wrap:wrap;">
+        <div id="loginNotice"
+          style="display:none;align-items:center;gap:12px;background:rgba(99,102,241,0.08);border:1px solid rgba(99,102,241,0.25);border-radius:12px;padding:14px 18px;margin-bottom:18px;flex-wrap:wrap;">
           <span style="font-size:1.3rem;">👤</span>
           <div style="flex:1;min-width:180px;">
             <strong style="font-size:0.88rem;color:#818cf8;">Please login first</strong>
-            <div style="font-size:0.78rem;color:var(--text-muted);margin-top:2px;">Use the <strong>Login</strong> button in the top navbar to sign in with Google, then submit your payment below.</div>
+            <div style="font-size:0.78rem;color:var(--text-muted);margin-top:2px;">Use the <strong>Login</strong> button
+              in the top navbar to sign in with Google, then submit your payment below.</div>
           </div>
-          <button onclick="signInWithGoogle()" style="background:rgba(99,102,241,0.15);border:1px solid rgba(99,102,241,0.3);border-radius:99px;padding:8px 16px;font-size:0.82rem;font-weight:700;color:#818cf8;cursor:pointer;white-space:nowrap;">Login with Google ↗</button>
+          <button onclick="signInWithGoogle()"
+            style="background:rgba(99,102,241,0.15);border:1px solid rgba(99,102,241,0.3);border-radius:99px;padding:8px 16px;font-size:0.82rem;font-weight:700;color:#818cf8;cursor:pointer;white-space:nowrap;">Login
+            with Google ↗</button>
         </div>
 
         <!-- STEP 1: UPI Payment -->
@@ -707,14 +1438,15 @@
           </div>
           <div class="qr-row">
             <div class="qr-wrap">
-              <img id="qrImg" src="" alt="UPI QR Code"/>
+              <img id="qrImg" src="" alt="UPI QR Code" />
             </div>
             <div class="qr-steps">
               <h4>How to Pay</h4>
               <ul class="steps-list">
                 <li><span class="step-n">1</span>Open GPay, PhonePe, Paytm or any UPI app</li>
                 <li><span class="step-n">2</span>Scan QR <strong>or</strong> send ₹19 to UPI ID above</li>
-                <li><span class="step-n">3</span>Add note: <strong style="color:var(--text-main)">JobFlow AI</strong></li>
+                <li><span class="step-n">3</span>Add note: <strong style="color:var(--text-main)">JobFlow AI</strong>
+                </li>
                 <li><span class="step-n">4</span>Take a screenshot of the success screen</li>
                 <li><span class="step-n">5</span>Click "I've Paid" button below</li>
               </ul>
@@ -729,32 +1461,41 @@
         <div id="payStep2" style="display:none;">
 
           <!-- Info Box Explaining The 2-Step Verification -->
-          <div style="background:rgba(132,204,22,0.06);border:1px solid rgba(132,204,22,0.15);border-radius:12px;padding:14px 16px;margin-bottom:18px;font-size:0.83rem;color:var(--text-muted);line-height:1.6;">
-            <strong style="display:block;font-size:0.74rem;text-transform:uppercase;letter-spacing:.05em;color:var(--accent-color);margin-bottom:4px;">🔐 Two-Step Verification</strong>
-            We verify your <strong style="color:var(--text-main)">login email</strong> matches the email you enter below, plus confirm your payment screenshot. This keeps your account secure.
+          <div
+            style="background:rgba(132,204,22,0.06);border:1px solid rgba(132,204,22,0.15);border-radius:12px;padding:14px 16px;margin-bottom:18px;font-size:0.83rem;color:var(--text-muted);line-height:1.6;">
+            <strong
+              style="display:block;font-size:0.74rem;text-transform:uppercase;letter-spacing:.05em;color:var(--accent-color);margin-bottom:4px;">🔐
+              Two-Step Verification</strong>
+            We verify your <strong style="color:var(--text-main)">login email</strong> matches the email you enter
+            below, plus confirm your payment screenshot. This keeps your account secure.
           </div>
 
           <div class="field">
             <label>Your Email Address <span style="color:#ef4444;">*</span></label>
-            <input type="email" id="userEmailInput" placeholder="Enter your login email address"/>
+            <input type="email" id="userEmailInput" placeholder="Enter your login email address" />
             <div class="field-note">Must match your Google login email for verification.</div>
-            <div class="field-err" id="emailErr">⚠️ Email doesn't match your login account. Please enter your correct email.</div>
+            <div class="field-err" id="emailErr">⚠️ Email doesn't match your login account. Please enter your correct
+              email.</div>
           </div>
 
           <div class="field">
             <label>UTR / Transaction ID <span style="color:#ef4444;">*</span></label>
-            <input type="text" id="utrInput" placeholder="e.g. 427812345678 (from your UPI app)" maxlength="30"/>
+            <input type="text" id="utrInput" placeholder="e.g. 427812345678 (from your UPI app)" maxlength="30" />
             <div class="field-note">Find it in your GPay/PhonePe transaction history · Usually 12 digits</div>
             <div class="field-err" id="utrErr">⚠️ Please enter a valid UTR / Transaction ID (at least 8 digits).</div>
           </div>
           <div class="field">
             <label>Payment Screenshot <span style="color:#ef4444;">*</span></label>
-            <div id="uploadZone" onclick="document.getElementById('ssFile').click()" style="border:2px dashed var(--glass-border);border-radius:12px;padding:28px 20px;text-align:center;cursor:pointer;transition:all 0.2s;background:var(--surface-2);">
+            <div id="uploadZone" onclick="document.getElementById('ssFile').click()"
+              style="border:2px dashed var(--glass-border);border-radius:12px;padding:28px 20px;text-align:center;cursor:pointer;transition:all 0.2s;background:var(--surface-2);">
               <div style="font-size:2rem;margin-bottom:8px;">📸</div>
-              <div style="font-size:0.88rem;font-weight:600;color:var(--text-main);margin-bottom:4px;">Click to upload screenshot</div>
-              <div style="font-size:0.76rem;color:var(--text-muted);">JPG, PNG · Max 5MB · Must show payment success + amount + UTR</div>
+              <div style="font-size:0.88rem;font-weight:600;color:var(--text-main);margin-bottom:4px;">Click to upload
+                screenshot</div>
+              <div style="font-size:0.76rem;color:var(--text-muted);">JPG, PNG · Max 5MB · Must show payment success +
+                amount + UTR</div>
             </div>
-            <input type="file" id="ssFile" accept="image/jpeg,image/png,image/webp" style="display:none;" onchange="handleFileSelect(this)"/>
+            <input type="file" id="ssFile" accept="image/jpeg,image/png,image/webp" style="display:none;"
+              onchange="handleFileSelect(this)" />
             <div id="filePreview" style="display:none;margin-top:10px;"></div>
             <div class="field-err" id="ssErr">⚠️ Please upload your payment screenshot.</div>
           </div>
@@ -771,25 +1512,33 @@
           <div style="font-size:3rem;margin-bottom:16px;">⏳</div>
           <h3 style="font-size:1.1rem;font-weight:800;color:var(--text-main);margin-bottom:8px;">Payment Submitted!</h3>
           <p style="font-size:0.88rem;color:var(--text-muted);max-width:360px;margin:0 auto 20px;line-height:1.65;">
-            Your payment screenshot has been submitted. The admin will verify it and activate your 30-day access — usually within a few hours.
+            Your payment screenshot has been submitted. The admin will verify it and activate your 30-day access —
+            usually within a few hours.
           </p>
-          <div id="pendingInfo" style="background:var(--surface-2);border:1px solid var(--glass-border);border-radius:12px;padding:16px;max-width:340px;margin:0 auto 20px;font-size:0.83rem;color:var(--text-muted);text-align:left;"></div>
-          <p style="font-size:0.78rem;color:var(--text-muted);">Refresh this page after approval to access the tools.</p>
-          <button class="btn-action" onclick="window.location.reload()" style="margin-top:12px;">🔄 Check Approval Status</button>
+          <div id="pendingInfo"
+            style="background:var(--surface-2);border:1px solid var(--glass-border);border-radius:12px;padding:16px;max-width:340px;margin:0 auto 20px;font-size:0.83rem;color:var(--text-muted);text-align:left;">
+          </div>
+          <p style="font-size:0.78rem;color:var(--text-muted);">Refresh this page after approval to access the tools.
+          </p>
+          <button class="btn-action" onclick="window.location.reload()" style="margin-top:12px;">🔄 Check Approval
+            Status</button>
         </div>
       </div>
 
       <!-- Pending Bar (Shown When Payment Submitted But Not Yet Approved) -->
-      <div id="pendingBar" style="display:none;align-items:center;gap:12px;background:rgba(234,179,8,0.07);border:1px solid rgba(234,179,8,0.2);border-radius:12px;padding:14px 20px;margin-bottom:24px;">
+      <div id="pendingBar"
+        style="display:none;align-items:center;gap:12px;background:rgba(234,179,8,0.07);border:1px solid rgba(234,179,8,0.2);border-radius:12px;padding:14px 20px;margin-bottom:24px;">
         <span style="font-size:1.4rem;">⏳</span>
         <div>
           <strong style="font-size:0.92rem;color:#eab308;">Payment Under Review</strong>
-          <div style="font-size:0.78rem;color:var(--text-muted);margin-top:2px;">Your screenshot was submitted — admin will approve within a few hours. Refresh to check.</div>
+          <div style="font-size:0.78rem;color:var(--text-muted);margin-top:2px;">Your screenshot was submitted — admin
+            will approve within a few hours. Refresh to check.</div>
         </div>
-        <button class="btn-action" onclick="window.location.reload()" style="margin-left:auto;white-space:nowrap;">🔄 Refresh</button>
+        <button class="btn-action" onclick="window.location.reload()" style="margin-left:auto;white-space:nowrap;">🔄
+          Refresh</button>
       </div>
 
-   
+
       <div class="unlocked-bar" id="unlockedBar">
         <span style="font-size:1.5rem;">🎉</span>
         <div style="flex:1;">
@@ -798,11 +1547,12 @@
             <span class="admin-chip" id="adminChip">⭐ Admin</span>
             <span id="accessInfo"></span>
           </div>
-          <div style="font-size:0.78rem;color:var(--text-muted);margin-top:3px;">Both AI tools are active · access tied to your account</div>
+          <div style="font-size:0.78rem;color:var(--text-muted);margin-top:3px;">Both AI tools are active · access tied
+            to your account</div>
         </div>
       </div>
 
-     
+
       <div id="toolArea">
         <div class="tool-wrap">
           <div class="tabs">
@@ -816,24 +1566,27 @@
             </button>
           </div>
 
-          
+
           <div class="tab-panel" id="panelCL">
             <div class="form-grid">
               <div class="field">
                 <label>Your Name</label>
-                <input type="text" id="clName" placeholder="e.g. Vivek Kumar"/>
+                <input type="text" id="clName" placeholder="e.g. Vivek Kumar" />
               </div>
               <div class="field">
                 <label>Job Title Applying For</label>
-                <input type="text" id="clJob" placeholder="e.g. Frontend Developer at Google"/>
+                <input type="text" id="clJob" placeholder="e.g. Frontend Developer at Google" />
               </div>
               <div class="field full">
                 <label>Your Key Skills & Experience</label>
-                <textarea id="clSkills" placeholder="e.g. 3 years React, Node.js, built 5 production apps, CS graduate..." style="min-height:80px;"></textarea>
+                <textarea id="clSkills"
+                  placeholder="e.g. 3 years React, Node.js, built 5 production apps, CS graduate..."
+                  style="min-height:80px;"></textarea>
               </div>
               <div class="field full">
                 <label>Job Description (paste full JD here)</label>
-                <textarea id="clJD" placeholder="Paste the complete job description from the company's website..." style="min-height:130px;"></textarea>
+                <textarea id="clJD" placeholder="Paste the complete job description from the company's website..."
+                  style="min-height:130px;"></textarea>
               </div>
             </div>
             <div class="field">
@@ -847,7 +1600,9 @@
               </div>
             </div>
             <button class="btn-ai" id="clBtn" onclick="generateCL()">✨ Generate Cover Letter</button>
-            <div class="loader" id="clLoader"><div class="dots"><span></span><span></span><span></span></div> Writing your cover letter…</div>
+            <div class="loader" id="clLoader">
+              <div class="dots"><span></span><span></span><span></span></div> Writing your cover letter…
+            </div>
             <div class="out-meta">
               <span class="word-count" id="clWC">0 words</span>
               <span class="ready-tag" id="clReady">✓ Ready to Send</span>
@@ -860,7 +1615,8 @@
             </div>
             <div class="tip-box">
               <strong>💡 Pro Tip</strong>
-              Paste the full job description for best results — the AI will tailor every sentence to match what the employer wants.
+              Paste the full job description for best results — the AI will tailor every sentence to match what the
+              employer wants.
             </div>
           </div>
 
@@ -869,7 +1625,7 @@
             <div class="form-grid">
               <div class="field">
                 <label>Role / Job Title</label>
-                <input type="text" id="iqRole" placeholder="e.g. Senior React Developer"/>
+                <input type="text" id="iqRole" placeholder="e.g. Senior React Developer" />
               </div>
               <div class="field">
                 <label>Number of Questions</label>
@@ -882,7 +1638,9 @@
               </div>
               <div class="field full">
                 <label>Job Description (paste full JD here)</label>
-                <textarea id="iqJD" placeholder="Paste the complete job description here for highly specific questions..." style="min-height:140px;"></textarea>
+                <textarea id="iqJD"
+                  placeholder="Paste the complete job description here for highly specific questions..."
+                  style="min-height:140px;"></textarea>
               </div>
             </div>
             <div class="field">
@@ -895,12 +1653,23 @@
               </div>
             </div>
             <button class="btn-ai" id="iqBtn" onclick="generateIQ()">🔍 Predict Interview Questions</button>
-            <div class="loader" id="iqLoader"><div class="dots"><span></span><span></span><span></span></div> Analyzing JD and predicting questions…</div>
+            <div class="loader" id="iqLoader">
+              <div class="dots"><span></span><span></span><span></span></div> Analyzing JD and predicting questions…
+            </div>
             <div id="iqStats" style="margin-top:20px;display:none;">
               <div class="stats-row">
-                <div class="stat"><div class="stat-n" id="stTotal">0</div><div class="stat-l">Total Questions</div></div>
-                <div class="stat"><div class="stat-n" id="stAns">0</div><div class="stat-l">With Answers</div></div>
-                <div class="stat"><div class="stat-n">100%</div><div class="stat-l">Interview Ready</div></div>
+                <div class="stat">
+                  <div class="stat-n" id="stTotal">0</div>
+                  <div class="stat-l">Total Questions</div>
+                </div>
+                <div class="stat">
+                  <div class="stat-n" id="stAns">0</div>
+                  <div class="stat-l">With Answers</div>
+                </div>
+                <div class="stat">
+                  <div class="stat-n">100%</div>
+                  <div class="stat-l">Interview Ready</div>
+                </div>
               </div>
             </div>
             <div id="iqOut"></div>
@@ -908,15 +1677,24 @@
               <strong>STAR Method</strong>
               Answer behavioral questions using the STAR format:
               <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;">
-                <span style="background:rgba(132,204,22,0.12);border:1px solid rgba(132,204,22,0.25);border-radius:8px;padding:6px 12px;font-size:0.82rem;"><span style="color:var(--accent-color);font-weight:800;">S</span>ituation</span>
+                <span
+                  style="background:rgba(132,204,22,0.12);border:1px solid rgba(132,204,22,0.25);border-radius:8px;padding:6px 12px;font-size:0.82rem;"><span
+                    style="color:var(--accent-color);font-weight:800;">S</span>ituation</span>
                 <span style="color:var(--text-muted);align-self:center;">→</span>
-                <span style="background:rgba(132,204,22,0.12);border:1px solid rgba(132,204,22,0.25);border-radius:8px;padding:6px 12px;font-size:0.82rem;"><span style="color:var(--accent-color);font-weight:800;">T</span>ask</span>
+                <span
+                  style="background:rgba(132,204,22,0.12);border:1px solid rgba(132,204,22,0.25);border-radius:8px;padding:6px 12px;font-size:0.82rem;"><span
+                    style="color:var(--accent-color);font-weight:800;">T</span>ask</span>
                 <span style="color:var(--text-muted);align-self:center;">→</span>
-                <span style="background:rgba(132,204,22,0.12);border:1px solid rgba(132,204,22,0.25);border-radius:8px;padding:6px 12px;font-size:0.82rem;"><span style="color:var(--accent-color);font-weight:800;">A</span>ction</span>
+                <span
+                  style="background:rgba(132,204,22,0.12);border:1px solid rgba(132,204,22,0.25);border-radius:8px;padding:6px 12px;font-size:0.82rem;"><span
+                    style="color:var(--accent-color);font-weight:800;">A</span>ction</span>
                 <span style="color:var(--text-muted);align-self:center;">→</span>
-                <span style="background:rgba(132,204,22,0.12);border:1px solid rgba(132,204,22,0.25);border-radius:8px;padding:6px 12px;font-size:0.82rem;"><span style="color:var(--accent-color);font-weight:800;">R</span>esult</span>
+                <span
+                  style="background:rgba(132,204,22,0.12);border:1px solid rgba(132,204,22,0.25);border-radius:8px;padding:6px 12px;font-size:0.82rem;"><span
+                    style="color:var(--accent-color);font-weight:800;">R</span>esult</span>
               </div>
-              <div style="margin-top:8px;font-size:0.8rem;">Click any question card below to expand and see a sample answer.</div>
+              <div style="margin-top:8px;font-size:0.8rem;">Click any question card below to expand and see a sample
+                answer.</div>
             </div>
           </div>
         </div>
@@ -941,16 +1719,16 @@
     </div>
   </div>
 
-  
+
 
   <script src="js/auth.js"></script>
   <script src="js/script.js"></script>
 
   <script>
-   
-    document.addEventListener('DOMContentLoaded', function() {
+
+    document.addEventListener('DOMContentLoaded', function () {
       initAuth();
-      
+
       initQR();
       restoreSession();
     });
@@ -961,21 +1739,21 @@
       document.getElementById('qrImg').src = `https://api.qrserver.com/v1/create-qr-code/?size=96x96&data=${encodeURIComponent(upiLink)}&color=000000&bgcolor=ffffff&qzone=1`;
     }
 
-    
-    
+
+
     const ADMIN_EMAIL = 'vk5400310@gmail.com';
 
-   
+
     let activeTool = 'cl';
     function selectTool(t) {
       activeTool = t;
-      document.getElementById('cardCL').classList.toggle('selected', t==='cl');
-      document.getElementById('cardIQ').classList.toggle('selected', t==='iq');
-      document.getElementById('cardCL').querySelector('.tool-check').textContent = t==='cl'?'✓':'';
-      document.getElementById('cardIQ').querySelector('.tool-check').textContent = t==='iq'?'✓':'';
+      document.getElementById('cardCL').classList.toggle('selected', t === 'cl');
+      document.getElementById('cardIQ').classList.toggle('selected', t === 'iq');
+      document.getElementById('cardCL').querySelector('.tool-check').textContent = t === 'cl' ? '✓' : '';
+      document.getElementById('cardIQ').querySelector('.tool-check').textContent = t === 'iq' ? '✓' : '';
     }
 
-   
+
     let clTone = 'Professional';
     document.querySelectorAll('.chip[data-tone]').forEach(c => {
       c.addEventListener('click', () => {
@@ -984,8 +1762,8 @@
       });
     });
 
-   
-    const iqTypes = new Set(['Behavioral','Technical','Situational','General']);
+
+    const iqTypes = new Set(['Behavioral', 'Technical', 'Situational', 'General']);
     document.querySelectorAll('.chip[data-qtype]').forEach(c => {
       c.addEventListener('click', () => {
         const t = c.dataset.qtype;
@@ -993,7 +1771,7 @@
       });
     });
 
-   
+
     function goToStep1() {
       document.getElementById('payStep1').style.display = 'block';
       document.getElementById('payStep2').style.display = 'none';
@@ -1013,8 +1791,8 @@
       setActiveStep(3);
     }
     function setActiveStep(n) {
-      [1,2,3].forEach(i => {
-        const el = document.getElementById('pgStep'+i);
+      [1, 2, 3].forEach(i => {
+        const el = document.getElementById('pgStep' + i);
         if (i === n) {
           el.style.background = 'rgba(132,204,22,0.12)';
           el.style.color = 'var(--accent-color)';
@@ -1025,7 +1803,7 @@
       });
     }
 
-    
+
     let selectedFile = null;
 
     function handleFileSelect(input) {
@@ -1037,7 +1815,7 @@
       selectedFile = file;
       document.getElementById('ssErr').classList.remove('show');
 
-     
+
       const reader = new FileReader();
       reader.onload = e => {
         document.getElementById('filePreview').style.display = 'block';
@@ -1046,11 +1824,11 @@
             <img src="${e.target.result}" style="width:48px;height:48px;object-fit:cover;border-radius:6px;border:1px solid var(--glass-border);" alt="preview"/>
             <div>
               <div style="font-size:0.84rem;font-weight:600;color:#22c55e;">✓ Screenshot selected</div>
-              <div style="font-size:0.74rem;color:var(--text-muted);">${file.name} · ${(file.size/1024).toFixed(0)} KB</div>
+              <div style="font-size:0.74rem;color:var(--text-muted);">${file.name} · ${(file.size / 1024).toFixed(0)} KB</div>
             </div>
             <button onclick="clearFile()" style="margin-left:auto;background:none;border:none;color:var(--text-muted);cursor:pointer;font-size:1.1rem;">✕</button>
           </div>`;
-        
+
         document.getElementById('uploadZone').style.borderColor = 'rgba(34,197,94,0.4)';
         document.getElementById('uploadZone').style.background = 'rgba(34,197,94,0.04)';
       };
@@ -1066,26 +1844,26 @@
       document.getElementById('uploadZone').style.background = '';
     }
 
-   
+
     function fileToBase64(file) {
       return new Promise((resolve, reject) => {
         const reader = new FileReader();
-        reader.onload  = () => resolve(reader.result);
+        reader.onload = () => resolve(reader.result);
         reader.onerror = reject;
         reader.readAsDataURL(file);
       });
     }
 
-    
+
     async function submitPayment() {
       const enteredEmail = document.getElementById('userEmailInput').value.trim().toLowerCase();
-      const utr          = document.getElementById('utrInput').value.trim().replace(/\s/g,'');
-      const emailErr     = document.getElementById('emailErr');
-      const utrErr       = document.getElementById('utrErr');
-      const ssErr        = document.getElementById('ssErr');
+      const utr = document.getElementById('utrInput').value.trim().replace(/\s/g, '');
+      const emailErr = document.getElementById('emailErr');
+      const utrErr = document.getElementById('utrErr');
+      const ssErr = document.getElementById('ssErr');
       let valid = true;
 
-      
+
       const loggedInEmail = window._jfCurrentEmail || '';
       if (!enteredEmail || enteredEmail !== loggedInEmail) {
         emailErr.classList.add('show'); valid = false;
@@ -1093,14 +1871,14 @@
         emailErr.classList.remove('show');
       }
 
-     
+
       if (utr.length < 8 || !/\d{6,}/.test(utr)) {
         utrErr.classList.add('show'); valid = false;
       } else {
         utrErr.classList.remove('show');
       }
 
-     
+
       if (!selectedFile) {
         ssErr.classList.add('show'); valid = false;
       } else {
@@ -1114,25 +1892,25 @@
       btn.innerHTML = '<span style="opacity:0.7">⏳ Uploading…</span>';
 
       try {
-        const userId  = window.getCurrentUser()?.id;
-        const email   = window.getCurrentUser()?.primaryEmailAddress?.emailAddress;
+        const userId = window.getCurrentUser()?.id;
+        const email = window.getCurrentUser()?.primaryEmailAddress?.emailAddress;
 
-        const base64  = await fileToBase64(selectedFile);
+        const base64 = await fileToBase64(selectedFile);
         const fileExt = selectedFile.name.split('.').pop().toLowerCase();
 
         const res = await window.apiFetch('/api/payments', {
-            method: 'POST',
-            body: {
-                email: email || enteredEmail,
-                utr: utr,
-                base64: base64,
-                fileExt: fileExt
-            }
+          method: 'POST',
+          body: {
+            email: email || enteredEmail,
+            utr: utr,
+            base64: base64,
+            fileExt: fileExt
+          }
         });
 
         if (!res || !res.ok) {
-            const errorText = res ? await res.text() : 'API Error';
-            throw new Error(errorText);
+          const errorText = res ? await res.text() : 'API Error';
+          throw new Error(errorText);
         }
 
         document.getElementById('pendingInfo').innerHTML =
@@ -1144,57 +1922,57 @@
            </div>`;
 
         goToStep3();
-      } catch(err) {
+      } catch (err) {
         btn.disabled = false;
         btn.innerHTML = '📤 Submit for Verification';
         alert('Error submitting payment: ' + err.message + '\\nPlease try again.');
       }
     }
 
-    
+
     async function checkPaymentInDB(userId, email) {
       try {
-          const res = await window.apiFetch(`/api/payments?action=check_approved&email=${encodeURIComponent(email)}`);
-          if (!res || !res.ok) return null;
-          return await res.json();
+        const res = await window.apiFetch(`/api/payments?action=check_approved&email=${encodeURIComponent(email)}`);
+        if (!res || !res.ok) return null;
+        return await res.json();
       } catch (e) {
-          console.error('DB check error:', e);
-          return null;
+        console.error('DB check error:', e);
+        return null;
       }
     }
 
-    
+
     async function checkPendingInDB(userId, email) {
       try {
-          const res = await window.apiFetch(`/api/payments?action=check_pending&email=${encodeURIComponent(email)}`);
-          if (!res || !res.ok) return null;
-          return await res.json();
+        const res = await window.apiFetch(`/api/payments?action=check_pending&email=${encodeURIComponent(email)}`);
+        if (!res || !res.ok) return null;
+        return await res.json();
       } catch (e) {
-          return null;
+        return null;
       }
     }
 
-   
+
     function daysLeft(record) {
       return Math.ceil((new Date(record.expires_at) - Date.now()) / 86400000);
     }
 
-   
+
     function buildExpiryBadge(record) {
-      const left      = daysLeft(record);
-      const expiryStr = new Date(record.expires_at).toLocaleDateString('en-IN', { day:'numeric', month:'short', year:'numeric' });
-      const approvedStr = new Date(record.approved_at).toLocaleDateString('en-IN', { day:'numeric', month:'short', year:'numeric' });
+      const left = daysLeft(record);
+      const expiryStr = new Date(record.expires_at).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' });
+      const approvedStr = new Date(record.approved_at).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' });
       const color = left <= 3 ? '#ef4444' : left <= 7 ? '#f59e0b' : '#22c55e';
-      return `<span style="font-size:0.78rem;color:${color};margin-left:8px;">⏳ ${left} day${left===1?'':'s'} left · expires ${expiryStr}</span>`
-           + `<span style="font-size:0.72rem;color:var(--text-muted);margin-left:10px;">Approved ${approvedStr}</span>`;
+      return `<span style="font-size:0.78rem;color:${color};margin-left:8px;">⏳ ${left} day${left === 1 ? '' : 's'} left · expires ${expiryStr}</span>`
+        + `<span style="font-size:0.72rem;color:var(--text-muted);margin-left:10px;">Approved ${approvedStr}</span>`;
     }
 
-   
+
     function showExpiryAlerts(record) {
       const left = daysLeft(record);
-      const expiryStr = new Date(record.expires_at).toLocaleDateString('en-IN', { day:'numeric', month:'short', year:'numeric' });
+      const expiryStr = new Date(record.expires_at).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' });
 
-     
+
       document.querySelectorAll('.expiry-alert').forEach(el => el.remove());
 
       let alertHtml = '';
@@ -1228,7 +2006,7 @@
             <span style="font-size:1.6rem; flex-shrink:0;">⚠️</span>
             <div style="flex:1; min-width:200px;">
               <div style="font-size:0.95rem; font-weight:800; color:#f59e0b; margin-bottom:3px;">
-                Your Pro Plan expires in ${left} day${left===1?'':'s'}!
+                Your Pro Plan expires in ${left} day${left === 1 ? '' : 's'}!
               </div>
               <div style="font-size:0.82rem; color:var(--text-muted);">
                 Renew before ${expiryStr} to keep access. Remaining days carry over to your new 30-day plan.
@@ -1241,28 +2019,28 @@
       }
 
       if (alertHtml) {
-        
+
         const toolArea = document.getElementById('toolArea');
         toolArea.insertAdjacentHTML('beforebegin', alertHtml);
       }
     }
 
-   
+
     function showRenewPanel() {
-    
+
       document.getElementById('payGate').style.display = 'block';
-     
+
       const hdr = document.querySelector('#payGate .panel-hdr h2');
       if (hdr) hdr.textContent = '🔄 Renew Your Pro Plan — ₹19';
       const sub = document.querySelector('#payGate .panel-hdr p');
       if (sub) sub.textContent = 'Your remaining days will carry over + 30 new days from approval';
-      document.getElementById('payGate').scrollIntoView({behavior:'smooth', block:'start'});
+      document.getElementById('payGate').scrollIntoView({ behavior: 'smooth', block: 'start' });
       goToStep1();
     }
 
-   
-    function unlockTools(isAdmin=false, paymentRecord=null) {
-      document.getElementById('payGate').style.display    = 'none';
+
+    function unlockTools(isAdmin = false, paymentRecord = null) {
+      document.getElementById('payGate').style.display = 'none';
       document.getElementById('pendingBar').style.display = 'none';
       document.getElementById('unlockedBar').classList.add('show');
       document.getElementById('toolArea').classList.add('show');
@@ -1285,7 +2063,7 @@
         await new Promise(r => setTimeout(r, 100));
         retries++;
       }
-      
+
       if (!window.Clerk) {
         console.error("❌ Clerk failed to load after waiting.");
         return;
@@ -1301,7 +2079,7 @@
       }
 
       console.log("✅ User detected:", user.primaryEmailAddress?.emailAddress);
-      const email  = user.primaryEmailAddress?.emailAddress?.toLowerCase() || '';
+      const email = user.primaryEmailAddress?.emailAddress?.toLowerCase() || '';
       const userId = user.id;
       window._jfCurrentEmail = email; // Store for verification logic
 
@@ -1343,85 +2121,85 @@
           const notice = document.getElementById('loginNotice');
           if (notice) notice.style.display = 'none';
         } else {
-          window.location.href = 'index.html'; 
+          window.location.href = 'index.html';
         }
       });
     }
 
-  
+
     function switchTab(t) {
-      document.getElementById('tabCL').classList.toggle('active', t==='cl');
-      document.getElementById('tabIQ').classList.toggle('active', t==='iq');
-      document.getElementById('panelCL').style.display = t==='cl' ? 'block' : 'none';
-      document.getElementById('panelIQ').style.display = t==='iq' ? 'block' : 'none';
+      document.getElementById('tabCL').classList.toggle('active', t === 'cl');
+      document.getElementById('tabIQ').classList.toggle('active', t === 'iq');
+      document.getElementById('panelCL').style.display = t === 'cl' ? 'block' : 'none';
+      document.getElementById('panelIQ').style.display = t === 'iq' ? 'block' : 'none';
     }
 
-   
-    let clText='', clRunning=false;
+
+    let clText = '', clRunning = false;
     async function generateCL() {
       if (clRunning) return;
       const jd = document.getElementById('clJD').value.trim();
       const job = document.getElementById('clJob').value.trim();
       if (!jd || !job) { alert('Please fill in Job Title and Job Description.'); return; }
-      clRunning=true;
-      const btn=document.getElementById('clBtn');
-      btn.disabled=true; btn.textContent='⏳ Generating…';
+      clRunning = true;
+      const btn = document.getElementById('clBtn');
+      btn.disabled = true; btn.textContent = '⏳ Generating…';
       document.getElementById('clLoader').classList.add('show');
       document.getElementById('clReady').classList.remove('show');
-      const out=document.getElementById('clOut');
-      out.classList.remove('empty'); out.textContent=''; clText='';
+      const out = document.getElementById('clOut');
+      out.classList.remove('empty'); out.textContent = ''; clText = '';
 
-      const prompt=`Write a ${clTone.toLowerCase()} cover letter.
-Applicant: ${document.getElementById('clName').value.trim()||'the applicant'}
+      const prompt = `Write a ${clTone.toLowerCase()} cover letter.
+Applicant: ${document.getElementById('clName').value.trim() || 'the applicant'}
 Job: ${job}
-Skills: ${document.getElementById('clSkills').value.trim()||'not specified'}
+Skills: ${document.getElementById('clSkills').value.trim() || 'not specified'}
 JD: ${jd}
 Write a complete, ready-to-send cover letter body only (no address block, no date).
 Start directly with "Dear Hiring Manager,". Tone: ${clTone}. Under 400 words. No placeholders in brackets.`;
 
       try {
-        const res = await window.apiFetch('/api/groq', { method:'POST', body: { prompt, max_tokens: 1500 } });
-        if(!res.ok){ const e=await res.json().catch(()=>({})); throw new Error(e?.error?.message||`HTTP ${res.status}`); }
+        const res = await window.apiFetch('/api/groq', { method: 'POST', body: { prompt, max_tokens: 1500 } });
+        if (!res.ok) { const e = await res.json().catch(() => ({})); throw new Error(e?.error?.message || `HTTP ${res.status}`); }
         const d = await res.json();
-        clText = d.content?.map(b=>b.text||'').join('')||'';
-        if(!clText) throw new Error('Empty response. Please try again.');
+        clText = d.content?.map(b => b.text || '').join('') || '';
+        if (!clText) throw new Error('Empty response. Please try again.');
         document.getElementById('clLoader').classList.remove('show');
         out.textContent = clText;
         const w = clText.trim().split(/\s+/).filter(Boolean).length;
-        document.getElementById('clWC').textContent = w+' words';
-        if(clText.length>50) document.getElementById('clReady').classList.add('show');
-      } catch(err) {
+        document.getElementById('clWC').textContent = w + ' words';
+        if (clText.length > 50) document.getElementById('clReady').classList.add('show');
+      } catch (err) {
         document.getElementById('clLoader').classList.remove('show');
         out.classList.add('empty');
-        out.innerHTML = `<div class="err-box"><strong>⚠️ Generation Failed</strong>${err.message||'Please try again.'}<br/><small>Tip: Try a shorter job description.</small></div>`;
+        out.innerHTML = `<div class="err-box"><strong>⚠️ Generation Failed</strong>${err.message || 'Please try again.'}<br/><small>Tip: Try a shorter job description.</small></div>`;
       }
-      btn.disabled=false; btn.innerHTML='✨ Generate Cover Letter'; clRunning=false;
+      btn.disabled = false; btn.innerHTML = '✨ Generate Cover Letter'; clRunning = false;
     }
 
-    function dlCL(){
-      if(!clText)return;
-      const a=document.createElement('a');
-      a.href=URL.createObjectURL(new Blob([clText],{type:'text/plain'}));
-      a.download='cover-letter.txt'; a.click();
+    function dlCL() {
+      if (!clText) return;
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(new Blob([clText], { type: 'text/plain' }));
+      a.download = 'cover-letter.txt'; a.click();
     }
 
     /* INTERVIEW QUESTIONS */
     async function generateIQ() {
-      const jd=document.getElementById('iqJD').value.trim();
-      if(!jd){alert('Please paste the job description.');return;}
-      if(iqTypes.size===0){alert('Select at least one question type.');return;}
-      const btn=document.getElementById('iqBtn');
-      btn.disabled=true; btn.textContent='⏳ Predicting…';
+      const jd = document.getElementById('iqJD').value.trim();
+      if (!jd) { alert('Please paste the job description.'); return; }
+      if (iqTypes.size === 0) { alert('Select at least one question type.'); return; }
+      const btn = document.getElementById('iqBtn');
+      btn.disabled = true; btn.textContent = '⏳ Predicting…';
       document.getElementById('iqLoader').classList.add('show');
-      document.getElementById('iqStats').style.display='none';
-      document.getElementById('iqOut').innerHTML='';
+      document.getElementById('iqStats').style.display = 'none';
+      document.getElementById('iqOut').innerHTML = '';
 
-      const num=document.getElementById('iqNum').value;
-      const types=[...iqTypes].join(', ');
-      const maxTok = num<=10?4000:num<=20?6000:num<=50?10000:16000;
+      const num = document.getElementById('iqNum').value;
+      const types = [...iqTypes].join(', ');
+      const maxTok = num <= 10 ? 4000 : num <= 20 ? 6000 : num <= 50 ? 10000 : 16000;
 
-      const prompt=`You are an expert interview coach. Based on this job description, generate exactly ${num} interview questions.
-Role: ${document.getElementById('iqRole').value.trim()||'not specified'}
+      const prompt = `You are an expert interview coach. Based on this job description, generate exactly ${num} interview questions.
+Role: ${document.getElementById('iqRole').value.trim() || 'not specified'}
 Question Types: ${types}
 Job Description: ${jd}
 IMPORTANT: Return ONLY a raw JSON array. No explanation, no markdown, no code fences. Start directly with [ and end with ].
@@ -1429,58 +2207,59 @@ Format: [{"question":"text","type":"Behavioral","answer":"2-3 sentence STAR meth
 Make questions very specific to the JD. Mix all requested types evenly.`;
 
       try {
-        const res = await window.apiFetch('/api/groq', { method:'POST', body: { prompt, max_tokens: maxTok } });
-        if(!res.ok){ const e=await res.json().catch(()=>({})); throw new Error(e?.error?.message||`HTTP ${res.status}`); }
+        const res = await window.apiFetch('/api/groq', { method: 'POST', body: { prompt, max_tokens: maxTok } });
+        if (!res.ok) { const e = await res.json().catch(() => ({})); throw new Error(e?.error?.message || `HTTP ${res.status}`); }
         const data = await res.json();
-        let txt = data.content?.map(b=>b.text||'').join('')||'';
-        if(!txt) throw new Error('Empty response from API');
-        txt = txt.replace(/```json\s*/gi,'').replace(/```\s*/gi,'').trim();
-        const s=txt.indexOf('['), e=txt.lastIndexOf(']');
-        if(s===-1||e===-1) throw new Error('Invalid response format. Please try again.');
-        txt = txt.slice(s,e+1);
+        let txt = data.content?.map(b => b.text || '').join('') || '';
+        if (!txt) throw new Error('Empty response from API');
+        txt = txt.replace(/```json\s*/gi, '').replace(/```\s*/gi, '').trim();
+        const s = txt.indexOf('['), e = txt.lastIndexOf(']');
+        if (s === -1 || e === -1) throw new Error('Invalid response format. Please try again.');
+        txt = txt.slice(s, e + 1);
         let qs;
-        try { qs=JSON.parse(txt); }
-        catch { txt=txt.replace(/,\s*$/,'')+']'; try{qs=JSON.parse(txt);}catch{throw new Error('Could not parse questions. Please try again.');} }
-        if(!Array.isArray(qs)||qs.length===0) throw new Error('No questions returned.');
+        try { qs = JSON.parse(txt); }
+        catch { txt = txt.replace(/,\s*$/, '') + ']'; try { qs = JSON.parse(txt); } catch { throw new Error('Could not parse questions. Please try again.'); } }
+        if (!Array.isArray(qs) || qs.length === 0) throw new Error('No questions returned.');
         renderIQ(qs);
-      } catch(err) {
-        document.getElementById('iqOut').innerHTML=`<div class="err-box"><strong>⚠️ Generation Failed</strong>${err.message||'Unknown error.'}<br/><small>Tip: Try shorter job description or fewer questions.</small></div>`;
+      } catch (err) {
+        document.getElementById('iqOut').innerHTML = `<div class="err-box"><strong>⚠️ Generation Failed</strong>${err.message || 'Unknown error.'}<br/><small>Tip: Try shorter job description or fewer questions.</small></div>`;
       }
       document.getElementById('iqLoader').classList.remove('show');
-      btn.disabled=false; btn.innerHTML='🔍 Predict Interview Questions';
+      btn.disabled = false; btn.innerHTML = '🔍 Predict Interview Questions';
     }
 
-    function tagClass(t){return{Behavioral:'beh',Technical:'tec',Situational:'sit',General:'gen'}[t]||'gen';}
-    function esc(s){const d=document.createElement('div');d.appendChild(document.createTextNode(s));return d.innerHTML;}
+    function tagClass(t) { return { Behavioral: 'beh', Technical: 'tec', Situational: 'sit', General: 'gen' }[t] || 'gen'; }
+    function esc(s) { const d = document.createElement('div'); d.appendChild(document.createTextNode(s)); return d.innerHTML; }
 
     function renderIQ(qs) {
-      document.getElementById('iqStats').style.display='block';
-      document.getElementById('stTotal').textContent=qs.length;
-      document.getElementById('stAns').textContent=qs.filter(q=>q.answer).length;
-      document.getElementById('iqOut').innerHTML=`<div class="q-list" style="margin-top:8px;">${qs.map((q,i)=>`
+      document.getElementById('iqStats').style.display = 'block';
+      document.getElementById('stTotal').textContent = qs.length;
+      document.getElementById('stAns').textContent = qs.filter(q => q.answer).length;
+      document.getElementById('iqOut').innerHTML = `<div class="q-list" style="margin-top:8px;">${qs.map((q, i) => `
         <div class="q-card" onclick="this.classList.toggle('open')">
           <div class="q-head">
-            <div class="q-num">${i+1}</div>
+            <div class="q-num">${i + 1}</div>
             <div class="q-text">${esc(q.question)}</div>
-            <span class="q-badge ${tagClass(q.type)}">${q.type||'General'}</span>
+            <span class="q-badge ${tagClass(q.type)}">${q.type || 'General'}</span>
             <span class="q-arr">▼</span>
           </div>
           <div class="q-ans">
             <div class="ans-lbl">💡 Sample Answer</div>
-            ${esc(q.answer||'Use the STAR method to answer this question.')}
+            ${esc(q.answer || 'Use the STAR method to answer this question.')}
           </div>
         </div>`).join('')}</div>`;
     }
 
 
     async function copyOut(outId, btnId) {
-      const text=document.getElementById(outId).textContent;
-      if(!text||text.includes('will appear')) return;
+      const text = document.getElementById(outId).textContent;
+      if (!text || text.includes('will appear')) return;
       await navigator.clipboard.writeText(text);
-      const b=document.getElementById(btnId);
-      b.classList.add('ok'); b.textContent='✓ Copied!';
-      setTimeout(()=>{b.classList.remove('ok');b.textContent='📋 Copy';},2000);
+      const b = document.getElementById(btnId);
+      b.classList.add('ok'); b.textContent = '✓ Copied!';
+      setTimeout(() => { b.classList.remove('ok'); b.textContent = '📋 Copy'; }, 2000);
     }
   </script>
 </body>
+
 </html>
