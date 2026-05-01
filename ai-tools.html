@@ -1380,7 +1380,7 @@ Write a complete, ready-to-send cover letter body only (no address block, no dat
 Start directly with "Dear Hiring Manager,". Tone: ${clTone}. Under 400 words. No placeholders in brackets.`;
 
       try {
-        const res = await fetch('/api/claude.js', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ prompt, max_tokens: 1500 }) });
+        const res = await window.apiFetch('/api/claude', { method:'POST', body: { prompt, max_tokens: 1500 } });
         if(!res.ok){ const e=await res.json().catch(()=>({})); throw new Error(e?.error?.message||`HTTP ${res.status}`); }
         const d = await res.json();
         clText = d.content?.map(b=>b.text||'').join('')||'';
