@@ -92,6 +92,6 @@ Career analytics dashboard
 
 **👨‍💻 Author**
 Vivek Kumar
-GitHub: https://github.com/Vivek15911
+GitHub: https://github.com/vivekkumar23287
 
 Project: Smart Career Automation System
