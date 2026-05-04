@@ -49,18 +49,27 @@ Git & GitHub
 **📂Project Structure**
 
 Smart-Career-Automation-System
+
 │
+
 ├── public/# Static files
+
 ├── src/# Source code
 
 │   ├── components/# UI components
 
 │   ├── pages/# Application pages
+
 │   ├── services/# API & AI services
+
 │   ├── assets/# Images and icons
+
 │   └── styles/# CSS files
+
 │
+
 ├── package.json
+
 ├── README.md
 
 **⚙️ Installation & Setup**
