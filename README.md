@@ -75,7 +75,7 @@ Smart-Career-Automation-System
 **⚙️ Installation & Setup**
 
 1️⃣ **Clone the repository**
-git clone https://github.com/vivekkumar23287
+git clone https://github.com/vivekkumar23287/Smart-Career-Automation.git
 
 2️⃣ **Navigate to the project folder**
 cd Smart-Career-Automation-System
