@@ -52,7 +52,9 @@ Smart-Career-Automation-System
 │
 ├── public/# Static files
 ├── src/# Source code
+
 │   ├── components/# UI components
+
 │   ├── pages/# Application pages
 │   ├── services/# API & AI services
 │   ├── assets/# Images and icons
@@ -62,12 +64,16 @@ Smart-Career-Automation-System
 ├── README.md
 
 **⚙️ Installation & Setup**
+
 1️⃣ **Clone the repository**
 git clone https://github.com/Vivek15911/Smart-Career-Automation-System.git
+
 2️⃣ **Navigate to the project folder**
 cd Smart-Career-Automation-System
+
 3️⃣ **Install dependencies**
 npm install
+
 4️⃣ **Run the development server**
 npm start
 
